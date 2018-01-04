@@ -4,15 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import {UserRegistrationComponent} from './user-registration/user-registration.component';
+import {MovieListComponent} from "./movie-search/movie-list/movie-list.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    MovieListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

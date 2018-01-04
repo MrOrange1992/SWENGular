@@ -1,4 +1,5 @@
 import {Genre} from './genre';
+import {CollectionChangeRecord} from "@angular/core";
 
 export interface Movie {
   id: number;
@@ -7,5 +8,6 @@ export interface Movie {
   posterPath: string;
   homepage: string;
   rating: number;
-  cast: string;
+  overview: string;
+  //cast: string;
 }

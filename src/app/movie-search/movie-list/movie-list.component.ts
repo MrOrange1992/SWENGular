@@ -1,14 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import {Movie} from "../../entities/movie";
+import {MovieList} from "../../entities/movie-list";
+import {MovieListService} from "../movie-list-service/movie-list-service";
 
 @Component({
   selector: 'app-movie-list',
-  templateUrl: './movie-list.component.html'
+  templateUrl: './movie-list.component.html',
+  providers: [MovieListService],
 })
 export class MovieListComponent implements OnInit {
 
-  constructor() { }
+  movielist: MovieList;
+
+  constructor(private movieListService: MovieListService) { }
+
 
   ngOnInit() {
+    this.loadList();
+  }
+
+  loadList(): void{
+    this.movieListService.load("bestOf").subscribe((movielist)=>{this.movielist=movielist;},(errResp)=>{console.error('Error loading movies',errResp);})
+    console.log("Movielist: ");
+    console.log(this.movielist);
   }
 
 }
