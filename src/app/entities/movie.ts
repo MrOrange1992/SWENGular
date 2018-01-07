@@ -9,5 +9,5 @@ export interface Movie {
   homepage: string;
   rating: number;
   overview: string;
-  //cast: string;
+  // cast: string;
 }
