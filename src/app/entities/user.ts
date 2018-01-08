@@ -7,4 +7,5 @@ export interface User {
   password: string;
   genres: Set<Genre>;
   movieLists: Set<MovieList>;
+  usersFollowing: Set<User>;
 }
