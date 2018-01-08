@@ -11,8 +11,8 @@ export class UserService {
   load(userName: string): Observable<User[]> {
     const url = 'http://localhost:8080/user/search';
     const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams().set('name', userName);
-    return this.http.get(url, {headers, params}).catch(this.handleError);
+    const params = new HttpParams().set('userName', userName);
+    return this.http.get<User[]>(url, {headers, params}).catch(this.handleError);
   }
 
   private handleError(error: any) {

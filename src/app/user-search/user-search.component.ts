@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../entities/user';
-import {Observable} from 'rxjs/Observable';
 import {UserService} from './user-service/user-service';
 
 @Component({
@@ -11,17 +10,24 @@ import {UserService} from './user-service/user-service';
 })
 export class UserSearchComponent implements OnInit {
 
-  userList: Observable<User[]>;
-
   userName: string;
+
+  userList: Array<User> = [];
+
 
   constructor(private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
   }
 
   search(): void {
-    this.userList = this.userService.load(this.userName);
+    this.userService
+      .load(this.userName)
+      .subscribe(
+        (userList) => { this.userList = userList; },
+        (errResp) => { console.error('Error loading flights', errResp); }
+        );
   }
 
 

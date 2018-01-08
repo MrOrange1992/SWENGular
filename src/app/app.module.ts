@@ -8,6 +8,7 @@ import {MovieListComponent} from "./movie-search/movie-list/movie-list.component
 import {HttpClientModule} from "@angular/common/http";
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UserComponent } from './user-search/user/user.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserComponent } from './user-search/user/user.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

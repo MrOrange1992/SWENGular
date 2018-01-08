@@ -1,27 +1,30 @@
+<div class="card">
+  <div class="header">
+    <h2 class="title">User Search</h2>
+  </div>
 
+  <div class="content">
+    <form>
+      <div class="form-group">
+        <label>User:</label>
+        <input [(ngModel)]="userName" name="from" class="form-control">
+      </div>
 
-<div class="content">
-  <form>
-    <div class="form-group">
-      <label>userName:</label>
-      <input [(ngModel)]="userName" name="userName" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <button
-        (click)="search()"
-        class="btn btn-default">Search</button>
-    </div>
-  </form>
+      <div class="form-group">
+        <button
+          [disabled]="!userName"
+          (click)="search()"
+          class="btn btn-default">Search</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 
 <div class="container">
-  <div class="row" *ngIf="userList | async as ulist">
-    <div *ngFor="let user of ulist" class="col-sm-4">
-      <div class="title">
-        {{user?.name}}
-      </div>
+  <div *ngFor="let user of userList" class="col-sm-4">
+    <div class="title">
+      {{user | json}}
     </div>
   </div>
 </div>
