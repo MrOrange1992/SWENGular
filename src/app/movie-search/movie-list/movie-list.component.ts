@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieList} from '../../entities/movie-list';
 import {MovieListService} from '../movie-list-service/movie-list-service';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-movie-list',
@@ -9,7 +10,7 @@ import {MovieListService} from '../movie-list-service/movie-list-service';
 })
 export class MovieListComponent implements OnInit {
 
-  movielist: MovieList;
+  movielist: Observable<MovieList>;
 
   constructor(private movieListService: MovieListService) { }
 
@@ -19,12 +20,7 @@ export class MovieListComponent implements OnInit {
   }
 
   loadList(): void {
-    this.movieListService
-      .load('bestOf')
-      .subscribe( (movielist) => { this.movielist = movielist; },
-                  (errResp) => { console.error('Error loading movies', errResp); }
-      );
-    console.log('Movielist: ' + this.movielist);
+    this.movielist = this.movieListService.load('bestOf');
   }
 
 }

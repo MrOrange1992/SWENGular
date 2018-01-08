@@ -1,5 +1,4 @@
 import {Genre} from './genre';
-import {CollectionChangeRecord} from "@angular/core";
 
 export interface Movie {
   id: number;
@@ -7,7 +6,7 @@ export interface Movie {
   genres: Set<Genre>;
   posterPath: string;
   homepage: string;
-  rating: number;
+  userRating: number;
   overview: string;
-  // cast: string;
+  cast:string;
 }

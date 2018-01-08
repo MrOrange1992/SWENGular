@@ -2,11 +2,12 @@
   movie-list works!
 </p>
 <div class="container">
-  <div class="row">
-    <div *ngFor="let m of movielist.movies" class="col-sm-4">
+  <div class="row" *ngIf="movielist | async as mlist">
+    <div *ngFor="let m of mlist.movies" class="col-sm-4">
       <div class="title">
         {{m?.title}}
       </div>
     </div>
   </div>
 </div>
+
