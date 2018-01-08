@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {MovieList} from '../../entities/movie-list';
 import 'rxjs/Rx';
-import {Movie} from "../../entities/movie";
 
 @Injectable()
 export class MovieListService {

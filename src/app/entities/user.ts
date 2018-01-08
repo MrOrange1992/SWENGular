@@ -3,8 +3,7 @@ import {Genre} from './genre';
 
 export interface User {
   id: number;
-  firstName: string;
-  lastName: string;
+  userName: string;
   password: string;
   genres: Set<Genre>;
   movieLists: Set<MovieList>;
