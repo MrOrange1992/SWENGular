@@ -6,17 +6,19 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import {UserRegistrationComponent} from './user-registration/user-registration.component';
 import {MovieListComponent} from "./movie-search/movie-list/movie-list.component";
 import {HttpClientModule} from "@angular/common/http";
+import {SlickModule} from "ngx-slick";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationComponent,
     MovieSearchComponent,
-    MovieListComponent
+    MovieListComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    SlickModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

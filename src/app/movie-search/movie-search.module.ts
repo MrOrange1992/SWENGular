@@ -14,6 +14,6 @@ import {MovieListService} from "./movie-list-service/movie-list-service";
   ],
   providers: [
     MovieListService,
-  ]
+  ],
 })
 export class MovieSearchModule { }

@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+.movie-list-container {
+  padding: 0px;
+  background: linear-gradient(141deg, #bfbfbf 0%, #ececec 51%, #b5b5b5 75%);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.movie-list-container .movie-card {
+  border-radius: 15px;
+  min-height: 450px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-bottom: 30px;
+  margin-left:10px;
+  margin-right:10px;
+  -webkit-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+}
+.movie-list-container .movie-card .overlay {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: none;
+  width: 300px;
+  height: 105px;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 15px 15px 15px;
+}
+.movie-list-container .movie-card .overlay .title {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+.movie-list-container .movie-card .overlay .genres {
+  padding: 0px;
+  margin: 0px;
+}
+.movie-list-container .movie-card .overlay .genres li {
+  display: inline-block;
+  color: white;
+}
+.movie-list-container .movie-card .overlay .genres li span {
+  font-size: 10px;
+  margin-right: 5px;
+}
+.movie-list-container .movie-card:hover .overlay {
+  display: block;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+50&0+0,0.8+50 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
+  /* IE6-9 */
+}
