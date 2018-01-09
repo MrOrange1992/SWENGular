@@ -13,8 +13,10 @@ export class MovieSearchComponent implements OnInit {
   movieName: string;
 
   movieList: Observable<MovieList>;
-  slideConfig = {"slidesToShow": 6, "slidesToScroll": 3, "infinite": true, "autoplay":true, "arrows":true, "speed":3000,"dots":true};
-
+  slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
+    'responsive':[{'breakpoint': 1199, 'settings':{ 'slidesToShow':4, 'slidesToScroll':4}},
+      {'breakpoint': 991, 'settings':{ 'slidesToShow':3, 'slidesToScroll':3}},
+      {'breakpoint': 767, 'settings':{ 'slidesToShow':1, 'slidesToScroll':1}}] };
 
   constructor(private movieListService: MovieListService) { }
 
