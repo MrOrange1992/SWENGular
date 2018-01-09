@@ -14,13 +14,14 @@ export class UserService {
     const params = new HttpParams().set('userName', userName);
     return this.http.get<User[]>(url, {headers, params}).catch(this.handleError);
   }
-
+  /*
   updateUser(user: User): void {
     const url = 'http://localhost:8080/user/follow';
     const headers = new HttpHeaders().set('Accept', 'application/json');
     const params = new HttpParams().set('METHOD', 'updateUser');
     this.http.post(url, {headers, params, user}).catch(this.handleError);
   }
+  */
 
   private handleError(error: any) {
     // In a real world app, we might use a remote logging infrastructure
