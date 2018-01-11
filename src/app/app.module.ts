@@ -10,9 +10,11 @@ import {SlickModule} from "ngx-slick";
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UserComponent } from './user-search/user/user.component';
 import {FormsModule} from "@angular/forms";
+import {AddListComponent} from "./add-list/add-list.component";
 
 @NgModule({
   declarations: [
+    AddListComponent,
     AppComponent,
     UserRegistrationComponent,
     MovieSearchComponent,
