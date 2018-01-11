@@ -12,3 +12,4 @@ Task/Feature,Priority,Status,Notes
 "Copy MovieList of other User",L,,"Handle duplicate in SB for search and displaying (name)"
 "Follow/Unfollow User",L,,
 "Get Recommendations from TMDB",L,,"TODO: TmdbAPI function in SB for recommendations for Movie (&Genre)"
+"FLEX: if implemented in SB -> movie search based on favourite actors",L,,
