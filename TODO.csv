@@ -2,13 +2,13 @@ Task/Feature,Priority,Status,Notes
 "Communication with SB application (Controller)",H,DONE,
 "Movie search",H,IP,"BONUS: Search by Genres"
 "User search",H,IP,"Display JSON of User(s) is working"
-"Display (User Cards) of Users active User is following"
 "User registration",H,,"Luke, TODO: password hashing in SB, selecting Genres"
 "User settings for add/remove Genres",M,,
 "CRUD MovieList",H,,
 "Add Movie to MovieList",H,,
 "Display owned MovieLists",H,,
 "Display MovieLists of Users active User is following",M,,
+"Display (User Cards) of Users active User is following",L,,
 "Copy MovieList of other User",L,,"Handle duplicate in SB for search and displaying (name)"
 "Follow/Unfollow User",L,,
 "Get Recommendations from TMDB",L,,"TODO: TmdbAPI function in SB for recommendations for Movie (&Genre)"
