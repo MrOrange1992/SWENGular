@@ -15,9 +15,11 @@ import {HomeComponent} from "./home/home.component";
 import {FooterComponent} from "./footer/footer.component";
 import {RouterModule} from "@angular/router";
 import {APP_ROUTES} from "./app.routes";
+import {AddListComponent} from "./add-list/add-list.component";
 
 @NgModule({
   declarations: [
+    AddListComponent,
     AppComponent,
     HomeComponent,
     HeaderComponent,
