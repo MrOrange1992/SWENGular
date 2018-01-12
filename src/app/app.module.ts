@@ -10,10 +10,18 @@ import {SlickModule} from "ngx-slick";
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UserComponent } from './user-search/user/user.component';
 import {FormsModule} from "@angular/forms";
+import {HeaderComponent} from "./header/header.component";
+import {HomeComponent} from "./home/home.component";
+import {FooterComponent} from "./footer/footer.component";
+import {RouterModule} from "@angular/router";
+import {APP_ROUTES} from "./app.routes";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
     UserRegistrationComponent,
     MovieSearchComponent,
     MovieListComponent,
@@ -25,7 +33,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     HttpClientModule,
     SlickModule.forRoot(),
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(APP_ROUTES),
   ],
   providers: [],
   bootstrap: [AppComponent]

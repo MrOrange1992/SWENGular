@@ -1,65 +1,137 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@cWhite: #fff;
+@cLightGrey: #d3d3d3;
+@cGrey: #778899;
+@cTurqouise: #1cc5d4;
 
-.movie-list-container {
-  background: linear-gradient(141deg, #bfbfbf 0%, #ececec 51%, #b5b5b5 75%);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  .movie-card {
-    border-radius:15px;
-    min-height: 22vw;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: relative;
-    margin-bottom: 30px;
-    margin-left:10px;
-    margin-right:10px;
-    -webkit-box-shadow: 0px 10px 17px -1px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0px 10px 17px -1px rgba(0,0,0,0.5);
-    box-shadow: 0px 10px 17px -1px rgba(0,0,0,0.5);
-
-    .overlay {
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      display: none;
-      width: 100%;
-      height: 8vw;
-      margin: 0 auto;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 30px 15px 15px 15px;
-
-      .title {
-        font-size: 16px;
-        color: white;
-        font-weight: bold;
+body {
+  padding-top: 70px;
+  min-height: 100vh;
+  header{
+    .navbar-default{
+      background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+      .navbar-brand{
+        color: @cWhite;
       }
-      .genres {
-        padding: 0px;
-        margin: 0px;
-        li {
-          display: inline-block;
-          color: white;
-          span {
-            font-size: 10px;
-            margin-right: 5px;
-          }
+      .navbar-right a{
+        color: @cWhite;
+      }
+    }
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    p{
+      margin:0px;
+      color: @cWhite;
+    }
+  }
+  .movie-list-container {
+    background: linear-gradient(141deg, #bfbfbf 0%, #ececec 51%, #b5b5b5 75%);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: hidden;
+    .movie-card {
+      border-radius: 15px;
+      min-height: 22vw;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      margin-bottom: 30px;
+      margin-left: 10px;
+      margin-right: 10px;
+      -webkit-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
 
+      .overlay {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        display: none;
+        width: 100%;
+        height: 8vw;
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 30px 15px 15px 15px;
+
+        .title {
+          font-size: 16px;
+          color: white;
+          font-weight: bold;
+        }
+        .genres {
+          padding: 0px;
+          margin: 0px;
+          li {
+            display: inline-block;
+            color: white;
+            span {
+              font-size: 10px;
+              margin-right: 5px;
+            }
+
+          }
         }
       }
-    }
-    &:hover {
-      .overlay {
-        display: block;
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+50&0+0,0.8+50 */
-        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0); /* IE6-9 */
+      &:hover {
+        .overlay {
+          display: block;
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+50&0+0,0.8+50 */
+          background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0); /* IE6-9 */
+        }
       }
-    }
 
+    }
+  }
+  .user-card{
+    min-height: 35vh;
+    position: relative;
+    display: block;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 7px 30px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 7px 30px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 7px 30px 0px rgba(0,0,0,0.25);
+    border: 1px solid @cLightGrey;
+    .card-title{
+      font-size: 24px;
+    }
+    .user-head{
+      .fa-user-circle-o{
+        display:block;
+        margin:0 auto;
+        font-size: 80px;
+        text-align:center;
+        color: @cTurqouise;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: @cGrey;
+      }
+      margin-bottom: 15px;
+    }
+    span{
+      display:inline-block;
+    }
+    a{
+      color: @cTurqouise;
+    }
+    .btn-center{
+      display:block;
+      margin:0 auto;
+      background-color:@cTurqouise;
+      color: @cWhite;
+    }
   }
 }

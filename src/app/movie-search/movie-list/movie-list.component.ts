@@ -1,7 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MovieList} from '../../entities/movie-list';
 import {MovieListService} from '../movie-list-service/movie-list-service';
 import {Observable} from "rxjs/Observable";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-movie-list',
@@ -10,19 +11,26 @@ import {Observable} from "rxjs/Observable";
 })
 export class MovieListComponent implements OnInit {
 
+  name: string;
+  showUserDetails: boolean;
+
   movielist: Observable<MovieList>;
   slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
     'responsive':[{'breakpoint': 1199, 'settings':{ 'slidesToShow':4, 'slidesToScroll':4}},
       {'breakpoint': 991, 'settings':{ 'slidesToShow':3, 'slidesToScroll':3}},
       {'breakpoint': 767, 'settings':{ 'slidesToShow':1, 'slidesToScroll':1}}] };
-  constructor(private movieListService: MovieListService) { }
+  constructor(private movieListService: MovieListService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(p => {
+      this.name= p['name'];
+      this.showUserDetails = p['showUserDetails'];
+    });
     this.loadList();
   }
 
   loadList(): void {
-    this.movielist = this.movieListService.load('bestOf');
+    this.movielist = this.movieListService.load(name);
   }
 
   getPosterStyles(path: string) {
@@ -33,3 +41,5 @@ export class MovieListComponent implements OnInit {
   }
 
 }
+
+//TODO: Get username from userID

@@ -17,3 +17,4 @@ import {MovieListService} from "./movie-list-service/movie-list-service";
   ],
 })
 export class MovieSearchModule { }
+
