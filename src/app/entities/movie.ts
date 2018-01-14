@@ -1,4 +1,5 @@
 import {Genre} from './genre';
+import {Actor} from './actor';
 
 export interface Movie {
   id: number;
@@ -8,5 +9,5 @@ export interface Movie {
   homepage: string;
   userRating: number;
   overview: string;
-  cast: string;
+  actors: Set<Actor>;
 }
