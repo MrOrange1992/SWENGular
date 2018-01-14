@@ -1,0 +1,5 @@
+Person,Date,Hours,Description
+frau,03.01.2018,2h,"Work Communication with SB"
+frau,05.01.2018,1.5h,"Implemented basic mappings to SB"
+frau,06.01.2018,3h,"Implemented basic user search and movie search"
+frau,14.01.2018,2h,"Work on movieDetails, movie search performance"
