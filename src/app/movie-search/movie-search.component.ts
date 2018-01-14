@@ -24,7 +24,7 @@ export class MovieSearchComponent implements OnInit {
   }
 
   search(): void {
-    this.movieList = this.movieListService.getMoviesByName(this.movieName);
+    this.movieList = this.movieListService.searchMoviesByName(this.movieName);
   }
 
   getPosterStyles(path: string) {

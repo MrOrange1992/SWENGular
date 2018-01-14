@@ -15,6 +15,6 @@ export class AddListComponent implements OnInit {
   ngOnInit() { }
 
   create(): void {
-    this.message = this.listName
+    this.message = this.listName;
   }
 }

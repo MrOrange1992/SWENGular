@@ -23,7 +23,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(p => {
-      this.name= p['name'];
+      this.name = p['name'];
       this.showUserDetails = p['showUserDetails'];
     });
     this.loadList();
@@ -35,7 +35,7 @@ export class MovieListComponent implements OnInit {
 
   getPosterStyles(path: string) {
     let pStyles = {
-      'background-image': 'url("https://image.tmdb.org/t/p/w300_and_h450_bestv2'+path,
+      'background-image': 'url("https://image.tmdb.org/t/p/w300_and_h450_bestv2' + path,
     };
     return pStyles;
   }

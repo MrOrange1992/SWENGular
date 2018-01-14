@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {MovieList} from '../../entities/movie-list';
 import 'rxjs/Rx';
+import {Movie} from "../../entities/movie";
 
 @Injectable()
 export class MovieListService {
@@ -16,10 +17,17 @@ export class MovieListService {
     return this.http.get(url, {headers, params}).catch(this.handleError);
   }
 
-  getMoviesByName(movieName: string): Observable<MovieList> {
-    const url = 'http://localhost:8080/movielist/searchByName';
+  searchMoviesByName(movieName: string): Observable<MovieList> {
+    const url = 'http://localhost:8080/movielist/searchMoviesByName';
     const headers = new HttpHeaders().set('Accept', 'application/json');
     const params = new HttpParams().set('movieName', movieName);
+    return this.http.get(url, {headers, params}).catch(this.handleError);
+  }
+
+  getMovieDetails(movieID: string): Observable<Movie> {
+    const url = 'http://localhost:8080/movielist/getMovieDetails';
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const params = new HttpParams().set('movieID', movieID);
     return this.http.get(url, {headers, params}).catch(this.handleError);
   }
 
