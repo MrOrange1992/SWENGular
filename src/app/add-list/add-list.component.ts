@@ -17,6 +17,7 @@ export class AddListComponent implements OnInit {
   ngOnInit() { }
 
   create(): void {
-    this.message = this.addListService.create(this.listName);
+    this.addListService.create(this.listName)
+    this.message = "hmmmm";
   }
 }

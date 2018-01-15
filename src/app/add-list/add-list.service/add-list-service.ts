@@ -9,12 +9,13 @@ export class AddListService {
 
   constructor(private http: HttpClient) {}
 
-  create(listname: string): String {
+  create(listname: string): Promise<any> {
     const url = 'http://localhost:8080/movielist';
-    //const headers = new HttpHeaders().set('Accept', 'application/json');
+    const headers = new HttpHeaders().set('Accept', 'application/json');
     const params = new HttpParams().set('name', listname);
-    this.http.post(url, params).catch(this.handleError);
-    return listname;
+    return this.http.post(url, {headers, params})
+      .toPromise()
+      .then(response => { return response }, this.handleError);
   }
 
   private handleError(error: any) {
