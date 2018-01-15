@@ -1,9 +1,7 @@
 import {Routes} from "@angular/router";
-import {MovieSearchComponent} from "./movie-search/movie-search.component";
-import {UserSearchComponent} from "./user-search/user-search.component";
-import {AppComponent} from "./app.component";
-import {MovieListComponent} from "./movie-search/movie-list/movie-list.component";
+import {MovieListComponent} from "./movie/movie-list/movie-list.component";
 import {HomeComponent} from "./home/home.component";
+import {SearchComponent} from "./search/search.component";
 
 
 export const APP_ROUTES: Routes = [
@@ -17,8 +15,8 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'user-search',
-    component: UserSearchComponent,
+    path: 'search',
+    component: SearchComponent,
   },
   {
     path: 'lists',
@@ -27,14 +25,6 @@ export const APP_ROUTES: Routes = [
   {
     path: 'movie-list/:name',
     component: MovieListComponent,
-  },
-  {
-    path: 'search',
-    component: MovieSearchComponent,
-  },
-  {
-    path: 'user',
-    component: UserSearchComponent,
   },
   {
     path: '**',

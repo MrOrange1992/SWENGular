@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="content">
+  <div class="container">
+    <div class="headline">
+      <h1 class="title">Movie Search</h1>
+    </div>
+    <div class="content">
+      <form>
+        <div class="form-group movie-search-form">
+          <input [(ngModel)]="searchName" name="searchName" class="form-control">
+          <select [(ngModel)]="searchSelect" name="searchSelect">
+            <option value="movie" selected>Movie</option>
+            <option value="user">User</option>
+            <option value="list">List</option>
+          </select>
+          <button [disabled]="!searchName" (click)="search()" class="btn btn-default">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div name="movieContainer" *ngIf="movieList | async as mlist">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Results</h1>
+        </div>
+      </div>
+      <div class="row">
+        <ngx-slick class="movie-list-container" #slickModal="slick-modal" [config]="slideConfig">
+          <div ngxSlickItem *ngFor="let m of mlist.movies" class="slide">
+            <div class="movie-card" [ngStyle]="getPosterStyles(m.posterPath)">
+              <div class="overlay">
+                <div class="title">
+                  {{m.title}}
+                </div>
+                <ul class="genres">
+                  <li *ngFor="let g of m.genres">
+                    <span>{{g.name}}, </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ngx-slick>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div name="userContainer" *ngFor="let user of userList" class="col-sm-4 col-md-3 ">
+        <div class="user-card">
+          <!-- {{user | json}} -->
+          <p class="text-center card-title">{{user.userName}}</p>
+          <div class="user-head">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="user-content">
+            <p>Lists: <span *ngFor="let list of user.movieLists"><a [routerLink]="['../movie-list', list.name, {showUserDetails: true}]">{{list.name}}</a>,</span></p>
+            <p>Users Following: {{user.usersFollowing.size}}</p>
+            <p>Favourite Genres: <span *ngFor="let genre of user.genreIDs">{{genre}},</span></p>
+          </div>
+          <button
+            [disabled]="!user"
+            (click)="followUser()"
+            class="btn btn-default btn-center">Follow</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

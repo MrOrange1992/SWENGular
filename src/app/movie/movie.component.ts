@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Movie} from "../../entities/movie";
-import {MovieListService} from "../movie-list-service/movie-list-service";
 import {Observable} from "rxjs/Observable";
+import {Movie} from "../entities/movie";
+import {MovieListService} from "./movie-list-service/movie-list-service";
 
 @Component({
   selector: 'app-movie',
