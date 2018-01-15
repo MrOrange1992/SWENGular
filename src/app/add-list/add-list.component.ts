@@ -1,20 +1,22 @@
 import {Component, OnInit} from "@angular/core";
+import {AddListService} from "./add-list.service/add-list-service";
 @Component({
   selector: 'app-add-list',
-  templateUrl: './add-list.component.html'
+  templateUrl: './add-list.component.html',
+  providers: [AddListService]
 })
 export class AddListComponent implements OnInit {
 
-  message: string;
+  message: String;
 
-  userId: number;
+  owner: number = 0; //TODO: actual UserID
   listName: string;
 
-  constructor() { }
+  constructor(private addListService: AddListService) { }
 
   ngOnInit() { }
 
   create(): void {
-    this.message = this.listName;
+    this.message = this.addListService.create(this.listName);
   }
 }
