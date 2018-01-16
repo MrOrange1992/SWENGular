@@ -31,6 +31,21 @@ export class MovieListService {
     return this.http.get(url, {headers, params}).catch(this.handleError);
   }
 
+  loadUserLists(userid: number): Observable<Set<MovieList>> {
+    const url = 'http://localhost:8080/movielist/';
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const params = new HttpParams();
+    return this.http.get(url, {headers, params}).catch(this.handleError);
+
+  }
+
+  addMovieToList(movieID: number, listID: string): Observable<String>{
+    const url = 'http://localhost:8080/addmovietolist/';
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    const params = new HttpParams().set('movieID', movieID.toString()).set('listID', listID);
+    return this.http.post(url, {headers, params}).catch(this.handleError);
+  }
+
   private handleError(error: any) {
       // In a real world app, we might use a remote logging infrastructure
       // We'd also dig deeper into the error to get a better message

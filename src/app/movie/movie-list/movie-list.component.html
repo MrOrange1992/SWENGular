@@ -6,8 +6,10 @@
           <div class="col-xs-12">
             <h1>{{mlist.name}}</h1>
             <p *ngIf="showUserDetails">
-              Owner: {{mlist.ownerID}}
+              Owner: {{mlist.ownerID}}<br >
+              Lists: <span *ngFor="let l of userLists">{{l.name}},</span>
             </p>
+            <p>{{responseText}}</p>
           </div>
         </div>
         <div class="row">
@@ -23,6 +25,13 @@
                       <span>{{g.name}}, </span>
                     </li>
                   </ul>
+                  <div class="add-area">
+                    <select name="add-to-list" ng-model="selectedList">
+                      <option *ngFor="let list of userLists" value="{{list.id}}">{{list.name}}</option>
+                    </select>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-default" (click)="addMovieToList(m.id)">Add</button>
+                  </div>
                 </div>
               </div>
             </div>
