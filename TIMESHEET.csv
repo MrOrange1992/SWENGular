@@ -7,4 +7,6 @@ mwol,12.01.2018,6h,"Added HeaderComponent, FooterComponent, HomeComponent, Front
 frau,14.01.2018,3h,"Work on movieDetails, movie search performance, work on cast/actor"
 mwol,14.01.2018,3h,"Unified movie-search and user-search to universal search-component"
 mwol,15.01.2018,3h,"added Addmovietolist functionality"
+frau,15.01.2018,4h,"Work on create movie list"
 mwol,17.01.2018,3h,"Styling for movielist, edited movielist-detail"
+frau,17.01.2018,4h,"Implemented create movie list, work on User registration"

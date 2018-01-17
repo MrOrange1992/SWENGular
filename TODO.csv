@@ -2,9 +2,9 @@ Task/Feature,Priority,Status,Notes
 "Communication with SB application (Controller)",H,DONE,
 "Movie search",H,IP,"BONUS: Search by Genres"
 "User search",H,IP,"Display JSON of User(s) is working"
-"User registration",H,,"Luke, TODO: password hashing in SB, selecting Genres"
+"User registration",H,IP,"http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial#alert-component-ts"
 "User settings for add/remove Genres",M,,
-"CRUD MovieList",H,,
+"CRUD MovieList",H,IP,"create DONE (except setting ownerID)"
 "Add Movie to MovieList",H,,
 "Display owned MovieLists",H,,
 "Display MovieLists of Users active User is following",M,,
