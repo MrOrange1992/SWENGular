@@ -37,11 +37,11 @@ export class MovieListComponent implements OnInit {
     this.responseText = "";
     this.selectedList = "";
     this.loadUserListNames();
-    this.loadList();
+    this.loadPopularMovies();
   }
 
-  loadList(): void {
-    this.movielist = this.movieListService.load(name);
+  loadPopularMovies(): void {
+    this.movielist = this.movieListService.getPopularMovies();
   }
 
   getPosterStyles(path: string) {

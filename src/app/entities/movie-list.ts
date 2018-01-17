@@ -4,7 +4,7 @@ import {User} from './user';
 export interface MovieList {
   id: number;
   name: string;
-  owner: number;
+  ownerID: number;
   movieIDs: Set<number>;
   movies: Set<Movie>;
 }

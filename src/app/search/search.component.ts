@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
       case "user": {
         this.movieList = null;
         this.userService
-          .load(this.searchName)
+          .searchUsersByNameContaining(this.searchName)
           .subscribe(
             (userList) => { this.userList = userList; },
             (errResp) => { console.error('Error loading users', errResp); }
