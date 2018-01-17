@@ -10,4 +10,5 @@ export interface Movie {
   userRating: number;
   overview: string;
   actors: Set<Actor>;
+  trailer: string;
 }
