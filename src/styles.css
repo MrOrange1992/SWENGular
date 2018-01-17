@@ -27,8 +27,11 @@ body footer p {
 body .movie-list-container {
   background: linear-gradient(141deg, #bfbfbf 0%, #ececec 51%, #b5b5b5 75%);
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   overflow: hidden;
+}
+body .movie-list-container .slick-slide:focus {
+  outline: none;
 }
 body .movie-list-container .movie-card {
   border-radius: 15px;
@@ -43,6 +46,13 @@ body .movie-list-container .movie-card {
   -webkit-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 10px 17px -1px rgba(0, 0, 0, 0.5);
+}
+body .movie-list-container .movie-card:focus {
+  outline: none;
+}
+body .movie-list-container .movie-card.selected {
+  min-height: 25vw;
+  margin: 15px 0px 30px 0px;
 }
 body .movie-list-container .movie-card .overlay {
   border-bottom-left-radius: 15px;
@@ -86,6 +96,32 @@ body .movie-list-container .movie-card:hover .overlay {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
   /* IE6-9 */
+}
+body .movie-detail-view {
+  background-color: #666666;
+  -webkit-box-shadow: inset 0px 0px 60px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 0px 60px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 0px 60px 0px rgba(0, 0, 0, 0.5);
+  min-height: 35vh;
+}
+body .movie-detail-view p,
+body .movie-detail-view h2 {
+  color: #ffffff;
+}
+body .movie-detail-view a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+body .movie-detail-view .add-area{
+  margin-top: 15px;
+}
+body .movie-detail-view .add-area select {
+  height: 35px;
+  width: 150px;
+}
+body .movie-detail-view .add-area button {
+  background-color: #1cc5d4;
+  color: #ffffff;
 }
 body .user-card {
   min-height: 35vh;

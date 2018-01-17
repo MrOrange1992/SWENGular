@@ -20,6 +20,8 @@ export class MovieListComponent implements OnInit {
 
   responseText: String;
   selectedList: string;
+  selectedMovie: Movie
+  selectedMovieID: number;
 
   slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
     'responsive':[{'breakpoint': 1199, 'settings':{ 'slidesToShow':4, 'slidesToScroll':4}},
@@ -55,6 +57,12 @@ export class MovieListComponent implements OnInit {
 
   addMovieToList(movieID: number): void{
    this.movieListService.addMovieToList(movieID, this.selectedList).subscribe(resp => this.responseText = resp);
+  }
+  onMovieClick(movie: Movie): void{
+
+    this.selectedMovie = movie;
+    this.selectedMovieID = movie.id;
+
   }
 
 }
