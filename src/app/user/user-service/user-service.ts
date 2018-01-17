@@ -8,20 +8,33 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  load(userName: string): Observable<User[]> {
+  searchUsersByNameContaining(userName: string): Observable<User[]> {
     const url = 'http://localhost:8080/user/search';
     const headers = new HttpHeaders().set('Accept', 'application/json');
     const params = new HttpParams().set('userName', userName);
     return this.http.get<User[]>(url, {headers, params}).catch(this.handleError);
   }
-  /*
-  updateUser(user: User): void {
-    const url = 'http://localhost:8080/user/follow';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams().set('METHOD', 'updateUser');
-    this.http.post(url, {headers, params, user}).catch(this.handleError);
+  getAll() {
+    return this.http.get<User[]>('/api/users');
   }
-  */
+
+  getById(id: number) {
+    return this.http.get('/api/users/' + id);
+  }
+
+  create(user: User) {
+    const url = 'http://localhost:8080/user';
+
+    return this.http.post(url, user);
+  }
+
+  update(user: User) {
+    return this.http.put('/api/users/' + user.id, user);
+  }
+
+  delete(id: number) {
+    return this.http.delete('/api/users/' + id);
+  }
 
   private handleError(error: any) {
     // In a real world app, we might use a remote logging infrastructure
