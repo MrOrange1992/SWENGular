@@ -3,11 +3,11 @@ Task/Feature,Priority,Status,Notes
 "Movie search",H,IP,"Add/Remove to/from List implementation missing"
 "Movie search BONUS: Search by Genres", ,
 "User search",H,IP,"Genrenames from IDs, number of following users missing, follow implementation missing"
-"User registration",H,IP,"http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial#alert-component-ts"
+"User registration",H,IP,"Todo: Duplicate check"
 "User settings for add/remove Genres",M,,
 "CRUD MovieList",H,IP,"create DONE (except setting ownerID)"
-"Add Movie to MovieList",H,,
-"Display owned MovieLists",H,,
+"Add Movie to MovieList",H,IP,
+"Display owned MovieLists",H,IP,
 "Display MovieLists of Users active User is following",M,,
 "Display (User Cards) of Users active User is following",L,,
 "Copy MovieList of other User",L,,"Handle duplicate in SB for search and displaying (name)"
