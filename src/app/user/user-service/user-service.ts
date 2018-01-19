@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 @Injectable()
 export class UserService {
 
+  baseURL = 'http://localhost:8080/user/';
+
   constructor(private http: HttpClient) {}
 
   searchUsersByNameContaining(userName: string): Observable<User[]> {
@@ -15,7 +17,7 @@ export class UserService {
     return this.http.get<User[]>(url, {headers, params}).catch(this.handleError);
   }
   getAll() {
-    return this.http.get<User[]>('/api/users');
+    return this.http.get<User[]>(this.baseURL + 'users');
   }
 
   getById(id: number) {

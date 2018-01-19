@@ -3,6 +3,7 @@ import {MovieListComponent} from "./movie/movie-list/movie-list.component";
 import {HomeComponent} from "./home/home.component";
 import {SearchComponent} from "./search/search.component";
 import {CreateMovieListComponent} from "./movie/create-movie-list/create-movie-list.component";
+import {UserRegistrationComponent} from "./user/user-registration/user-registration.component";
 
 
 export const APP_ROUTES: Routes = [
@@ -14,6 +15,10 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'register',
+    component: UserRegistrationComponent,
   },
   {
     path: 'search',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../user-service/user-service";
 import {AlertService} from "../../services/alert.service";
+import {User} from "../../entities/user";
 
 @Component({
   selector: 'app-user-registration',
@@ -13,7 +14,7 @@ import {AlertService} from "../../services/alert.service";
 })
 export class UserRegistrationComponent {
 
-  model: any = {};
+  user: any = {};
   loading = false;
 
   constructor(
@@ -23,7 +24,8 @@ export class UserRegistrationComponent {
 
   register() {
     this.loading = true;
-    this.userService.create(this.model)
+
+    this.userService.create(this.user)
       .subscribe(
         data => {
           this.alertService.success('Registration successful', true);

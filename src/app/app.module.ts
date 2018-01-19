@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {UserRegistrationComponent} from './user/user-registration/user-registration.component';
 import {MovieListComponent} from "./movie/movie-list/movie-list.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SlickModule} from "ngx-slick";
 import { UserComponent } from './user/user.component';
 import {FormsModule} from "@angular/forms";
@@ -15,9 +15,16 @@ import {RouterModule} from "@angular/router";
 import {APP_ROUTES} from "./app.routes";
 import {SearchComponent} from "./search/search.component";
 import { CreateMovieListComponent } from './movie/create-movie-list/create-movie-list.component';
-import {LoginComponent} from "./login/login.component";
 import { AlertComponent } from './alert/alert.component';
 import {SanitizeUrlPipe} from "./shared/pipes/SanitizeUrlPipe";
+//import {AuthGuard} from "./guards/auth.guard";
+import {AlertService} from "./services/alert.service";
+import {AuthenticationService} from "./services/authentication.service";
+import {UserService} from "./user/user-service/user-service";
+//import {JwtInterceptor} from "./helpers/jwt.interceptor";
+//import {BackendInterceptor} from "./helpers/backend.interceptor";
+import {LoginComponent} from "./user/login/login.component";
+
 
 @NgModule({
   declarations: [
@@ -32,6 +39,7 @@ import {SanitizeUrlPipe} from "./shared/pipes/SanitizeUrlPipe";
     CreateMovieListComponent,
     LoginComponent,
     AlertComponent,
+    LoginComponent,
     SanitizeUrlPipe
   ],
   exports: [
@@ -44,7 +52,18 @@ import {SanitizeUrlPipe} from "./shared/pipes/SanitizeUrlPipe";
     FormsModule,
     RouterModule.forRoot(APP_ROUTES),
   ],
-  providers: [],
+  providers: [
+    //AuthGuard,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    //{
+      //provide: HTTP_INTERCEPTORS,
+      // useClass: JwtInterceptor,
+      //multi: true
+    //},
+    // BackendInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,7 +19,7 @@ export class MovieListService {
   }
 
   getMovieList(movieListID: number): Observable<MovieList> {
-    const url = 'http://localhost:8080/viewmovielist/'+movieListID;
+    const url = 'http://localhost:8080/viewmovielist/' + movieListID;
     const headers = new HttpHeaders().set('Accept', 'application/json');
     return this.http.get(url, {headers}).catch(this.handleError);
   }
@@ -58,8 +58,7 @@ export class MovieListService {
    * @param {MovieList} movieList
    * @returns {Promise<any>}
    */
-  createMovieList(movieList: MovieList): Promise<any>
-  {
+  createMovieList(movieList: MovieList): Promise<any> {
     return this.http.post(this.baseURL + 'movielist', movieList)
       .toPromise().then(response => { return; });
   }
