@@ -17,6 +17,7 @@ import {SearchComponent} from "./search/search.component";
 import { CreateMovieListComponent } from './movie/create-movie-list/create-movie-list.component';
 import {LoginComponent} from "./login/login.component";
 import { AlertComponent } from './alert/alert.component';
+import {SanitizeUrlPipe} from "./shared/pipes/SanitizeUrlPipe";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { AlertComponent } from './alert/alert.component';
     UserComponent,
     CreateMovieListComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    SanitizeUrlPipe
+  ],
+  exports: [
+    SanitizeUrlPipe,
   ],
   imports: [
     BrowserModule,

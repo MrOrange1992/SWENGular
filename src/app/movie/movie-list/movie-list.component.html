@@ -49,7 +49,9 @@
               </div>
             </div>
             <div class="col-sm-6">
-
+              <iframe class="yt-frame" width="540" height="310"
+                      [src]="selectedMovie.trailer.replace('https://youtu.be/','https://www.youtube.com/embed/') | sanitizeUrlPipe" frameborder="0" allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>

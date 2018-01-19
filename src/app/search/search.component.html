@@ -1,21 +1,25 @@
 <app-header></app-header>
 <div class="content">
   <div class="container">
-    <div class="headline">
-      <h1 class="title">Movie Search</h1>
-    </div>
-    <div class="content">
-      <form>
-        <div class="form-group movie-search-form">
-          <input [(ngModel)]="searchName" name="searchName" class="form-control">
-          <select [(ngModel)]="searchSelect" name="searchSelect">
-            <option value="movie" selected>Movie</option>
-            <option value="user">User</option>
-            <option value="list">List</option>
-          </select>
-          <button [disabled]="!searchName" (click)="search()" class="btn btn-default">Search</button>
+    <div class="row">
+      <div class=" col-sm-push-3 col-sm-6">
+        <div class="headline">
+          <h1 class="title text-center">Search for Movies, Lists or Users</h1>
         </div>
-      </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" col-sm-push-3 col-sm-6">
+        <form>
+          <div class="form-group movie-search-form">
+            <input [(ngModel)]="searchName" name="searchName" class="form-control">
+            <select [(ngModel)]="searchSelect" name="searchSelect">
+              <option *ngFor="let value of searchSelectValues" [ngValue]="value">{{value}}</option>
+            </select>
+            <button [disabled]="!searchName" (click)="search()" class="btn btn-default">Search</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <div class="container-fluid">
@@ -28,7 +32,7 @@
       <div class="row">
         <ngx-slick class="movie-list-container" #slickModal="slick-modal" [config]="slideConfig">
           <div ngxSlickItem *ngFor="let m of mlist.movies" class="slide">
-            <div class="movie-card" [ngStyle]="getPosterStyles(m.posterPath)">
+            <div class="movie-card" [ngClass]="{'selected': selectedMovieID === m.id }" [ngStyle]="getPosterStyles(m.posterPath)" (click)="onMovieClick(m)">
               <div class="overlay">
                 <div class="title">
                   {{m.title}}
@@ -43,6 +47,31 @@
           </div>
         </ngx-slick>
       </div>
+      <div class="row">
+        <div *ngIf="selectedMovie" class="movie-detail-view">
+          <div class="col-sm-6">
+            <h2>{{selectedMovie.title}}</h2>
+            <p><i class="fa fa-star" aria-hidden="true">{{selectedMovie.userRating}}</i></p>
+            <p>Genres: <span *ngFor="let genre of selectedMovie.genres">{{genre.name}}, </span></p>
+            <p>Actors: <span *ngFor="let actor of selectedMovie.actors">{{actor.name}}, </span></p>
+            <p>{{selectedMovie.overview}}</p>
+            <a href="{{selectedMovie.homepage}}" target="_blank" >Homepage</a>
+            <div class="add-area">
+              <select name="add-to-list" ng-model="selectedList">
+                <option *ngFor="let list of userLists" value="{{list.id}}">{{list.name}}</option>
+              </select>
+              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+              <button class="btn btn-default" (click)="addMovieToList(m.id)">Add</button>
+              <button class="btn btn-default" (click)="removeMovieFromList(m.id)">Remove</button>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <iframe class="yt-frame" width="540" height="310"
+                    [src]="selectedMovie.trailer.replace('https://youtu.be/','https://www.youtube.com/embed/') | sanitizeUrlPipe" frameborder="0" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
@@ -55,7 +84,7 @@
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           </div>
           <div class="user-content">
-            <p>Lists: <span *ngFor="let list of user.movieLists"><a [routerLink]="['../movie-list', list.name, {showUserDetails: true}]">{{list.name}}</a>,</span></p>
+            <p>Lists: <span *ngFor="let list of user.movieLists"><a [routerLink]="['../movie-list', 'userlist', {id: list.id, showUserDetails: true}]">{{list.name}}</a>,</span></p>
             <p>Users Following: {{user.usersFollowing.size}}</p>
             <p>Favourite Genres: <span *ngFor="let genre of user.genreIDs">{{genre}},</span></p>
           </div>

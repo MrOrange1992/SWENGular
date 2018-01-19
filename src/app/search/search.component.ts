@@ -4,6 +4,9 @@ import {Observable} from "rxjs/Observable";
 import {MovieListService} from "../movie/movie-list-service/movie-list-service";
 import {User} from "../entities/user";
 import {UserService} from "../user/user-service/user-service";
+import {MovieListComponent} from "../movie/movie-list/movie-list.component";
+import {Movie} from "../entities/movie";
+import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-search',
@@ -12,20 +15,28 @@ import {UserService} from "../user/user-service/user-service";
 })
 export class SearchComponent implements OnInit {
 
-  searchSelect: string;
   searchName: string;
+
+  searchSelectValues: string[] = ["movie","user","list"];
+  searchSelect = this.searchSelectValues[0];
+  movieListComponent: MovieListComponent;
 
   movieList: Observable<MovieList> = null;
   userList: Array<User> = [];
+
+  selectedMovie: Movie;
+  selectedMovieID: number;
+  safeTrailerUrl: SafeResourceUrl;
 
   slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
     'responsive':[{'breakpoint': 1199, 'settings':{ 'slidesToShow':4, 'slidesToScroll':4}},
       {'breakpoint': 991, 'settings':{ 'slidesToShow':3, 'slidesToScroll':3}},
       {'breakpoint': 767, 'settings':{ 'slidesToShow':1, 'slidesToScroll':1}}] };
 
-  constructor(private movieListService: MovieListService, private userService: UserService) { }
+  constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+
   }
 
   search(): void {
@@ -54,6 +65,19 @@ export class SearchComponent implements OnInit {
 
   getPosterStyles(path: string) {
     return {'background-image': 'url("https://image.tmdb.org/t/p/w300_and_h450_bestv2' + path};
+  }
+
+  onMovieClick(movie: Movie): void{
+
+    this.selectedMovieID = movie.id;
+    this.loadMovieDetail(movie.id).subscribe(movie => this.selectedMovie = movie);
+  }
+  sanitizeTrailer(url: string):SafeResourceUrl{
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("https://youtu.be/","https://www.youtube.com/embed/"));
+  }
+
+  loadMovieDetail(id: number): Observable<Movie>{
+    return this.movieListService.getMovieDetails(id);
   }
 
 }

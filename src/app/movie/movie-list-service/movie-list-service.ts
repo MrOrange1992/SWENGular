@@ -18,6 +18,12 @@ export class MovieListService {
     return this.http.get(url, {headers}).catch(this.handleError);
   }
 
+  getMovieList(movieListID: number): Observable<MovieList> {
+    const url = 'http://localhost:8080/viewmovielist/'+movieListID;
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    return this.http.get(url, {headers}).catch(this.handleError);
+  }
+
   searchMoviesByName(movieName: string): Observable<MovieList> {
     const url = 'http://localhost:8080/movielist/searchMoviesByName';
     const headers = new HttpHeaders().set('Accept', 'application/json');
@@ -25,10 +31,10 @@ export class MovieListService {
     return this.http.get(url, {headers, params}).catch(this.handleError);
   }
 
-  getMovieDetails(movieID: string): Observable<Movie> {
+  getMovieDetails(movieID: number): Observable<Movie> {
     const url = 'http://localhost:8080/movielist/getMovieDetails';
     const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams().set('movieID', movieID);
+    const params = new HttpParams().set('movieID', movieID.toString());
     return this.http.get(url, {headers, params}).catch(this.handleError);
   }
 
