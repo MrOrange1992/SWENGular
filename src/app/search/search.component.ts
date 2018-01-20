@@ -63,21 +63,4 @@ export class SearchComponent implements OnInit {
   }
 
 
-  getPosterStyles(path: string) {
-    return {'background-image': 'url("https://image.tmdb.org/t/p/w300_and_h450_bestv2' + path};
-  }
-
-  onMovieClick(movie: Movie): void{
-
-    this.selectedMovieID = movie.id;
-    this.loadMovieDetail(movie.id).subscribe(movie => this.selectedMovie = movie);
-  }
-  sanitizeTrailer(url: string):SafeResourceUrl{
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("https://youtu.be/","https://www.youtube.com/embed/"));
-  }
-
-  loadMovieDetail(id: number): Observable<Movie>{
-    return this.movieListService.getMovieDetails(id);
-  }
-
 }

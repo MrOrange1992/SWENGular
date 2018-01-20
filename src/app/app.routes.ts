@@ -6,6 +6,8 @@ import {CreateMovieListComponent} from "./movie/create-movie-list/create-movie-l
 import {UserRegistrationComponent} from "./user/user-registration/user-registration.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {LoginComponent} from "./user/login/login.component";
+import {UserListComponent} from "./userlist/userlist.component";
+import {ListComponent} from "./list/list.component";
 
 
 export const APP_ROUTES: Routes = [
@@ -39,8 +41,12 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'lists',
-    component: MovieListComponent,
+    component: ListComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-list/:name',
+    component: UserListComponent,
   },
   {
     path: 'movie-list/:name',

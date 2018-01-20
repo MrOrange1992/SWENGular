@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="content">
+  <div class="container">
+    <h1>Your Movie-Lists</h1>
+    <div *ngIf="userLists | async as mlists" >
+      <div *ngFor="let list of mlists">
+        <h2>{{list.name}}</h2>
+        <p>Movies: {{list.movieIDs.length}}</p>
+        <button class="btn btn-default" [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: false}]">Edit List</button>
+        <button
+          (click)="deleteList(list.id)"
+          class="btn btn-default">Delete List</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

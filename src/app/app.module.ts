@@ -23,7 +23,9 @@ import {AuthenticationService} from './services/authentication.service';
 import {UserService} from './user/user-service/user-service';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {BackendInterceptor} from './helpers/backend.interceptor';
-import {LoginComponent} from './user/login/login.component';
+import {LoginComponent} from "./user/login/login.component";
+import {ListComponent} from "./list/list.component";
+import {UserListComponent} from "./userlist/userlist.component";
 
 
 @NgModule({
@@ -39,8 +41,9 @@ import {LoginComponent} from './user/login/login.component';
     CreateMovieListComponent,
     LoginComponent,
     AlertComponent,
-    LoginComponent,
-    SanitizeUrlPipe
+    SanitizeUrlPipe,
+    ListComponent,
+    UserListComponent,
   ],
   exports: [
     SanitizeUrlPipe,

@@ -10,6 +10,7 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   providers: [MovieListService],
+  inputs: ['movielist', 'userLists','loadedmovielist'],
 })
 export class MovieListComponent implements OnInit {
 
@@ -17,7 +18,8 @@ export class MovieListComponent implements OnInit {
   showUserDetails: boolean;
   userLists: Set<MovieList>;
 
-  movielist: Observable<MovieList>;
+  public movielist: Observable<MovieList>;
+  public loadedmovielist: MovieList;
 
   responseText: String;
   selectedList: string;
@@ -32,24 +34,10 @@ export class MovieListComponent implements OnInit {
   constructor(private movieListService: MovieListService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.route.params.subscribe(p => {
-      this.id = p['id'];
-      this.showUserDetails = p['showUserDetails'];
-    });
     this.responseText = "";
     this.selectedList = "";
-    this.loadUserListNames();
-    //this.loadPopularMovies();
-    this.loadMovieList(this.id);
   }
 
-  loadPopularMovies(): void {
-    this.movielist = this.movieListService.getPopularMovies();
-  }
-
-  loadMovieList(id: number) {
-    this.movielist = this.movieListService.getMovieList(id);
-  }
   loadMovieDetail(id: number): Observable<Movie>{
     return this.movieListService.getMovieDetails(id);
   }
@@ -61,13 +49,13 @@ export class MovieListComponent implements OnInit {
     return pStyles;
   }
 
-  loadUserListNames(): void {
-    this.movieListService.loadUserLists(1).subscribe(lists => this.userLists = lists);
-  }
-
   addMovieToList(movieID: number): void{
    this.movieListService.addMovieToList(movieID, this.selectedList).subscribe(resp => this.responseText = resp);
   }
+  removeMovieFromList(movieID:number): void{
+    this.movieListService.removeMovieFromList(movieID, this.selectedList).subscribe(resp => this.responseText = resp);
+  }
+
   onMovieClick(movie: Movie): void{
 
     this.selectedMovieID = movie.id;
@@ -78,5 +66,4 @@ export class MovieListComponent implements OnInit {
   }
 
 }
-
 //TODO: Get username from userID

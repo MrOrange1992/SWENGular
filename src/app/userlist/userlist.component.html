@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <p *ngIf="showUserDetails">
+          Owner: <span *ngIf="ownerName | async as o" >{{o}}</span><br >
+          Lists: <a href="/user-list/userlist;id={{l.id}};showUserDetails=true" *ngFor="let l of userLists">{{l.name}}, </a>
+        </p>
+        <p>{{responseText}}</p>
+      </div>
+    </div>
+    <app-movie-list [movielist]="selectedUserList" [userLists]="userLists"></app-movie-list>
+  </div>
+</div>
+<app-footer></app-footer>
