@@ -23,7 +23,8 @@ import {AuthenticationService} from './services/authentication.service';
 import {UserService} from './user/user-service/user-service';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {BackendInterceptor} from './helpers/backend.interceptor';
-import {LoginComponent} from "./user/login/login.component";
+import {LoginComponent} from './user/login/login.component';
+import {GenreService} from "./genre/genre-service/genre-service";
 import {ListComponent} from "./list/list.component";
 import {UserListComponent} from "./userlist/userlist.component";
 
@@ -59,6 +60,7 @@ import {UserListComponent} from "./userlist/userlist.component";
     AuthGuard,
     AlertService,
     AuthenticationService,
+    GenreService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

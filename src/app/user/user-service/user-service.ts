@@ -26,7 +26,7 @@ export class UserService {
 
   create(user: User) {
     const url = 'http://localhost:8080/user';
-
+    console.log(user.genreIDs);
     return this.http.post(url, user);
   }
 
