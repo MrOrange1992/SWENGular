@@ -6,9 +6,16 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 @Injectable()
 export class UserService {
 
-  baseURL = 'http://localhost:8080/user/';
+  baseURL = 'http://localhost:8080/';
 
-  constructor(private http: HttpClient) {}
+  users: any = [];
+
+  constructor(private http: HttpClient) {
+    this.http.get(this.baseURL + 'users')
+      .subscribe(data => {
+        Object.values(data).forEach(value => this.users.push(value));
+      });
+  }
 
   searchUsersByNameContaining(userName: string): Observable<User[]> {
     const url = 'http://localhost:8080/user/search';
@@ -16,18 +23,25 @@ export class UserService {
     const params = new HttpParams().set('userName', userName);
     return this.http.get<User[]>(url, {headers, params}).catch(this.handleError);
   }
+
   getAll() {
     return this.http.get<User[]>(this.baseURL + 'users');
   }
+
 
   getById(id: number) {
     return this.http.get('/api/users/' + id);
   }
 
-  create(user: User) {
-    const url = 'http://localhost:8080/user';
-    console.log(user.genreIDs);
-    return this.http.post(url, user);
+  create(newUser: User): Observable<any> {
+
+    // validation
+    if (this.users.filter(user => {
+      return user.username === newUser.username; }).length) {
+      return Observable.throw('Username "' + newUser.username + '" is already taken');
+    }
+
+    return this.http.post(this.baseURL + 'user', newUser);
   }
 
   update(user: User) {

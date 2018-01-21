@@ -23,9 +23,14 @@
       <div class="row" *ngIf="genres.length > 0">
         <div class="col-sm-4" *ngFor="let g of genres" [class.active]="g === selectedGenre">
           <label>{{g.name}}</label>
-          <input type="checkbox" (click)="select(g)">
+          <!--input type="checkbox" (click)="select(g)"-->
+          <input type="checkbox" (change)="onChange(g.id, $event.target.checked)">
+
+          <!--input type="checkbox" name="genreID" [(ngModel)]="user.genreIDs"-->
         </div>
       </div>
+
+
     </div>
 
     <div class="form-group">

@@ -11,12 +11,7 @@ import {MovieListService} from '../movie-list-service/movie-list-service';
 })
 export class CreateMovieListComponent implements OnInit {
 
-  // movieList: Observable<MovieList>;
-
-  // movieListName: string;
-
   movieList: any = {};
-
 
   constructor(
     private movieListService: MovieListService,
@@ -25,8 +20,7 @@ export class CreateMovieListComponent implements OnInit {
   ngOnInit() { }
 
   create(): void {
-    //TODO replace with currentUser
-    this.movieList.ownerID = 1;
+    this.movieList.ownerID = JSON.parse(localStorage.getItem('activeUser')).id;
     this.movieListService.createMovieList(this.movieList);
   }
 

@@ -36,7 +36,6 @@ export class SearchComponent implements OnInit {
   constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-
   }
 
   search(): void {

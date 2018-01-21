@@ -20,8 +20,10 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.selectedList = "";
-    //TODO: Replace with current user
-    this.userID = 1;
+    this.userID = JSON.parse(localStorage.getItem('activeUser')).id;
+
+    console.log(this.userID);
+
     this.loadUserLists();
   }
 

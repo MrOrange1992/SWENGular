@@ -19,10 +19,9 @@ export class UserRegistrationComponent {
   user: any = {};
   loading = false;
 
-  message: string ="";
+  message = '';
   name: string;
-  genres: Array<Genre> = [];
-  //selectedGenreIDs: Set<number> = new Set<number>();
+  genres: Genre[] = [];
 
   constructor(
     private router: Router,
@@ -35,24 +34,16 @@ export class UserRegistrationComponent {
       .getAll()
       .subscribe(
         (genres) => {
-          this.genres = genres;
+          this.genres = genres.sort((n1, n2) => n1.name.charCodeAt(0) - n2.name.charCodeAt(0));
         },
         (errResp) => {
           console.error('Error loading genres', errResp);
-        }
-      )
-    //TODO order array by genre names
-    //this.genres = this.genres.sort((n1,n2) => n1.name.charCodeAt(0) - n2.name.charCodeAt(0));
-
-    //this.user.genreIDs = new Set<number>();
-
-    this.user.genreIDs = "";
+        });
+    this.user.genreIDs = [];
   }
 
   register() {
     this.loading = true;
-
-    //this.user.genreIDs = this.selectedGenreIDs;
 
     this.userService.create(this.user)
       .subscribe(
@@ -66,14 +57,9 @@ export class UserRegistrationComponent {
         });
   }
 
-  select(g: Genre): void {
-    if(this.user.genreIDs.indexOf(g.id) < 0){
-      this.user.genreIDs += (g.id+",");
-      this.message = "Added: " + g.name;
-    }
-    else {
-      this.user.genreIDs.replace((g.id+","),"");
-      this.message = "Deleted: " + g.name;
-    }
+  onChange(id: number, isChecked: boolean): void {
+    if (isChecked) { this.user.genreIDs.push(id); }
+    else { this.user.genreIDs.delete(id); }
+
   }
 }
