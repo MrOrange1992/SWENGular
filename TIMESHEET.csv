@@ -14,3 +14,4 @@ mwol,19.01.2018,4h,"Edited search and movie-list component, added trailers to mo
 frau,19.01.2018,5h,"Work on login / registration"
 mwol,20.01.2018,4.5h,"implemented movie-listing for user, add movie to list, remove movie from list, delete list, reorganized movie-list-component"
 frau,21.01.2018,6h,"implemented user login/registration/update"
+mwol,21.01.2018,1h,"added reactive input validation for register page"

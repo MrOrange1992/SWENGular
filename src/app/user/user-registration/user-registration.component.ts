@@ -5,6 +5,7 @@ import {AlertService} from '../../services/alert.service';
 import {User} from '../../entities/user';
 import {Genre} from "../../entities/genre";
 import {GenreService} from "../../genre/genre-service/genre-service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-registration',
@@ -22,12 +23,33 @@ export class UserRegistrationComponent {
   message = '';
   name: string;
   genres: Genre[] = [];
+  registerForm: FormGroup;
+
+  validationMessages = {
+    'username': {
+      'required': 'You need to enter a username',
+      'minlength': "Your username has to have at least 3 characters",
+      'maxlength': "Your username must not be longer than 16 characters"
+    },
+    'password': {
+      'required': 'You need to enter a password',
+      'minlength': "Your password has to have at least 8 characters",
+      'maxlength': "Your password must not be longer than 128 characters"
+    }
+  };
+
+  formErrors = {
+    'username':'',
+    'password':'',
+  };
 
   constructor(
     private router: Router,
     private userService: UserService,
     private genreService: GenreService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit() {
     this.genreService
@@ -39,12 +61,37 @@ export class UserRegistrationComponent {
         (errResp) => {
           console.error('Error loading genres', errResp);
         });
+    this.buildForm();
     this.user.genreIDs = [];
+    this.registerForm.valueChanges
+      .subscribe(data => this.onValueChanged(data));
+  }
+
+  buildForm(): void {
+    this.registerForm = this.fb.group({
+      'username': [this.user.username,[Validators.required,Validators.maxLength(16),Validators.minLength(3)]],
+      'password': [this.user.password,[Validators.required,Validators.minLength(8),Validators.maxLength(128)]]
+    });
+  }
+
+  onValueChanged(data?: any){
+    if (!this.registerForm) return;
+    const form = this.registerForm;
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   register() {
     this.loading = true;
-
     this.userService.create(this.user)
       .subscribe(
         data => {
