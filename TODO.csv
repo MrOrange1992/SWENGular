@@ -3,9 +3,9 @@ Task/Feature,Priority,Status,Notes
 "Movie search",H,IP,"Add/Remove to/from List implementation missing"
 "Movie search BONUS: Search by Genres", ,
 "User search",H,IP,"Genrenames from IDs, number of following users missing, follow implementation missing"
-"User registration",H,IP,"Todo: Duplicate check"
+"User registration",H,DONE,"With Authentication / Validation"
 "User settings for add/remove Genres",M,,
-"CRUD MovieList",H,IP,"create DONE (except setting ownerID)"
+"CRUD MovieList",H,IP,"create DONE"
 "Add Movie to MovieList",H,IP,
 "Display owned MovieLists",H,IP,
 "Display MovieLists of Users active User is following",M,,
