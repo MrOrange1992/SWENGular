@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService} from '../user-service/user-service';
-import {AlertService} from '../../services/alert.service';
-import {User} from '../../entities/user';
-import {Genre} from "../../entities/genre";
 import {GenreService} from "../../genre/genre-service/genre-service";
+import {UserService} from "../user-service/user-service";
+import {Router} from "@angular/router";
+import {AlertService} from "../../services/alert.service";
+import {Genre} from "../../entities/genre";
 
 @Component({
-  selector: 'app-user-registration',
-  templateUrl: './user-registration.component.html',
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
   providers: [
     UserService,
     AlertService
   ]
 })
-export class UserRegistrationComponent {
+export class ProfileComponent implements OnInit {
 
   user: any = {};
   loading = false;
 
-  message = '';
-  name: string;
   genres: Genre[] = [];
+
 
   constructor(
     private router: Router,
@@ -42,14 +40,22 @@ export class UserRegistrationComponent {
     this.user.genreIDs = [];
   }
 
-  register() {
+  update() {
     this.loading = true;
 
-    this.userService.create(this.user)
+    this.userService.update(this.user)
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          let userUpdate = JSON.parse(localStorage.getItem('activeUser'));
+
+          userUpdate.username = this.user.username;
+          userUpdate.password = this.user.password;
+          userUpdate.genreIDs = this.user.genreIDs;
+          userUpdate.favouriteActorIDs = this.user.favouriteActorIDs;
+          localStorage.setItem('activeUser', JSON.stringify(userUpdate));
+
+          this.alertService.success('Update successful', true);
+          this.router.navigate(['/']);
         },
         error => {
           this.alertService.error(error);
@@ -62,4 +68,5 @@ export class UserRegistrationComponent {
     else { this.user.genreIDs.pop(id); }
 
   }
+
 }

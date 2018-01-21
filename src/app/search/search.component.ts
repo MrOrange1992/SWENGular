@@ -36,10 +36,11 @@ export class SearchComponent implements OnInit {
   constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    console.log(JSON.parse(localStorage.getItem('activeUser')));
   }
 
   search(): void {
-    switch(this.searchSelect){
+    switch(this.searchSelect) {
       case "movie": {
         this.userList = [];
         this.movieList = this.movieListService.searchMoviesByName(this.searchName);

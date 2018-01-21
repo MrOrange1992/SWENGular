@@ -45,7 +45,7 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/users/' + user.id, user);
+    return this.http.put(this.baseURL + 'users/' + JSON.parse(localStorage.getItem('activeUser')).id, user);
   }
 
   delete(id: number) {

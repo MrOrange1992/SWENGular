@@ -8,6 +8,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {LoginComponent} from "./user/login/login.component";
 import {UserListComponent} from "./userlist/userlist.component";
 import {ListComponent} from "./list/list.component";
+import {ProfileComponent} from "./user/profile/profile.component";
 
 
 export const APP_ROUTES: Routes = [
@@ -28,6 +29,11 @@ export const APP_ROUTES: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'search',
