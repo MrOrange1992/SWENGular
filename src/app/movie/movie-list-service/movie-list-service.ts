@@ -19,11 +19,10 @@ export class MovieListService {
     return this.http.get(this.baseURL, { params }).catch(this.handleError);
   }
 
-  createRecommendedMovieList(genreIDs: Set<number>, userID : number): Observable<MovieList> {
-    const url = 'http://localhost:8080/movielist/' + userID;
+  createRecommendationList(genreIDs: Set<number>): Observable<MovieList> {
     const params = new HttpParams().set('action', 'getRecommendations');
 
-    return this.http.post(url, genreIDs, { params }).catch(this.handleError);
+    return this.http.post(this.baseURL, genreIDs, { params }).catch(this.handleError);
   }
 
   getMovieListByID(movieListID: number): Observable<MovieList> {

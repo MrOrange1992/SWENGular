@@ -26,16 +26,18 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.selectedList = "";
+    /*
     this.user = JSON.parse(localStorage.getItem('activeUser'));
     this.userID = JSON.parse(localStorage.getItem('activeUser')).id;
     this.userLists = this.movieListService.loadUserLists(this.userID);
-    if(this.userLists.filter(movieList => movieList.name.equal('Recommnedation'))){
+    if(this.userLists.filter(movieList => movieList.name.equal('Recommendation'))){
       console.log("ngOnInit (IF = TRUE)");
       //JSON.parse(localStorage.getItem('activeUser')).genreIDs
       this.movieListService.createRecommendedMovieList(JSON.parse(localStorage.getItem('activeUser')).genreIDs, this.userID).subscribe();
     } else console.log("ngOnInit (IF = FALSE)")
-    ;
 
+    ;
+*/
     //this.movieListService.createRecommendedMovieList(this.user.genreIDs).subscribe();
     //console.log(this.userID);
     this.loadUserLists();

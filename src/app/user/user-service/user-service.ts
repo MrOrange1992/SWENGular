@@ -54,7 +54,7 @@ export class UserService {
     const url = this.baseURL + JSON.parse(localStorage.getItem('activeUser')).id;
     const params = new HttpParams().set('action', 'updateUser');
 
-    return this.http.put(url, user);
+    return this.http.put(url, user, { params });
   }
 
   // TODO
