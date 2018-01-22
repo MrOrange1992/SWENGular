@@ -48,7 +48,7 @@
           </div>
           <button
             [disabled]="!user"
-            (click)="followUser()"
+            (click)="followUser(user.id)"
             class="btn btn-default btn-center">Follow</button>
 
         </div>

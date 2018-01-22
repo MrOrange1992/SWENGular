@@ -10,78 +10,77 @@ import {Genre} from "../../entities/genre";
 @Injectable()
 export class MovieListService {
 
-  baseURL = 'http://localhost:8080/';
+  baseURL = 'http://localhost:8080/movielist/';
 
   constructor(private http: HttpClient) {}
 
   getPopularMovies(): Observable<MovieList> {
-    const url = 'http://localhost:8080/movielist/getPopularMovies';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get(url, {headers}).catch(this.handleError);
+    const params = new HttpParams().set('action', 'getPopularMovies');
+    return this.http.get(this.baseURL, { params }).catch(this.handleError);
   }
 
-  getMovieList(movieListID: number): Observable<MovieList> {
-    const url = 'http://localhost:8080/viewmovielist/' + movieListID;
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get(url, {headers}).catch(this.handleError);
+  getMovieListByID(movieListID: number): Observable<MovieList> {
+    const url = this.baseURL + movieListID;
+    const params = new HttpParams().set('action', 'getMovieListByID');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
-  getMovieListIDs(userID: number): Observable<Set<number>> {
-    const url = 'http://localhost:8080/movielistids/' + userID;
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get(url, {headers}).catch(this.handleError);
+
+  getMovieListIDsOfOwner(userID: number): Observable<Set<number>> {
+    const url = this.baseURL + userID;
+    const params = new HttpParams().set('action', 'getMovieListIDsOfOwner');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
-  getOwnerName(ownerID:number): Observable<String> {
-    const url = 'http://localhost:8080/listownername/' + ownerID;
-    const headers = new HttpHeaders().set('Accept', 'application/text');
-    return this.http.get(url, {headers}).catch(this.handleError);
+  getOwnerName(ownerID: number): Observable<String> {
+    const url = this.baseURL + ownerID;
+    const params = new HttpParams().set('action', 'getOwnerName');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
 
   searchMoviesByName(movieName: string): Observable<MovieList> {
-    const url = 'http://localhost:8080/movielist/searchMoviesByName';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams().set('movieName', movieName);
-    return this.http.get(url, {headers, params}).catch(this.handleError);
+    const url = this.baseURL + movieName;
+    const params = new HttpParams().set('action', 'searchByName');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
 
   getMovieDetails(movieID: number): Observable<Movie> {
-    const url = 'http://localhost:8080/movielist/getMovieDetails';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams().set('movieID', movieID.toString());
-    return this.http.get(url, {headers, params}).catch(this.handleError);
+    const url = this.baseURL + movieID;
+    const params = new HttpParams().set('action', 'getMovieDetails');
+    return this.http.get(url, { params }).catch(this.handleError);
   }
 
-  loadUserLists(userid: number): Observable<Set<MovieList>> {
-    const url = 'http://localhost:8080/movielist/';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    const params = new HttpParams();
-    return this.http.get(url, {headers, params}).catch(this.handleError);
+  loadUserLists(userID: number): Observable<Set<MovieList>> {
+    const url = this.baseURL + userID;
+    const params = new HttpParams().set('action', 'getMovieListsOfUser');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
 
-  addMovieToList(movieID: number, listID: string): Observable<String> {
-    const url = 'http://localhost:8080/addmovietolist';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.post(url, {'movieID':movieID.toString(),'listID':listID}).catch(this.handleError);
+  addMovieToList(movieID: number, listID: number): Observable<String> {
+    const url = this.baseURL + listID;
+    const params = new HttpParams().set('action', 'addMovieToList');
+    return this.http.put(url, movieID, { params }).catch(this.handleError);
   }
 
-  removeMovieFromList(movieID: number, listID: string): Observable<String> {
-    const url = 'http://localhost:8080/removemoviefromlist';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.post(url, {'movieID':movieID.toString(),'listID':listID}).catch(this.handleError);
-  }
-  /***
-   * Posts given MovieList to DB
-   * @param {MovieList} movieList
-   * @returns {Promise<any>}
-   */
-  createMovieList(movieList: MovieList): Promise<any> {
-    return this.http.post(this.baseURL + 'movielist', movieList)
-      .toPromise().then(response => { return; });
+  removeMovieFromList(movieID: number, listID: number): Observable<String> {
+    const url = this.baseURL + listID;
+    const params = new HttpParams().set('action', 'deleteMovieFromList');
+
+    return this.http.put(url, movieID, { params }).catch(this.handleError);
   }
 
-  deleteListFromUser(listID: number): Observable<String>{
-    const url = 'http://localhost:8080/removelistfromuser';
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.post(url, {'listID':listID.toString()}).catch(this.handleError);
+  createMovieList(movieList: MovieList): Observable<any> {
+    const params = new HttpParams().set('action', 'createMovieList');
+    return this.http.post(this.baseURL, movieList, { params });
+  }
+
+  deleteListFromUser(listID: number): Observable<String> {
+    const url = this.baseURL + listID;
+    const params = new HttpParams().set('action', 'deleteMovieList');
+    return this.http.delete(url, { params }).catch(this.handleError);
   }
 
   getGenre(genreID:number): Observable<Genre>{

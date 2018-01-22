@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteList(id: number): void{
-    this.movieListService.getMovieList(id).subscribe(list => this.listToDelete = list);
+    this.movieListService.getMovieListByID(id).subscribe(list => this.listToDelete = list);
     this.movieListService.deleteListFromUser(id).subscribe(output => this.output = output);
     this.loadUserLists();
     this.user = JSON.parse(localStorage.getItem('activeUser'));

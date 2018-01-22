@@ -8,6 +8,7 @@ import {MovieListComponent} from "../movie/movie-list/movie-list.component";
 import {Movie} from "../entities/movie";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
+import {AlertService} from "../services/alert.service";
 
 @Component({
   selector: 'app-search',
@@ -36,7 +37,11 @@ export class SearchComponent implements OnInit {
       {'breakpoint': 991, 'settings':{ 'slidesToShow':3, 'slidesToScroll':3}},
       {'breakpoint': 767, 'settings':{ 'slidesToShow':1, 'slidesToScroll':1}}] };
 
-  constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
+  constructor(private movieListService: MovieListService,
+              private userService: UserService,
+              private alertService: AlertService,
+              private route: ActivatedRoute,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('activeUser'));
@@ -72,6 +77,16 @@ export class SearchComponent implements OnInit {
         break;
       }
     }
+  }
+
+  followUser(userID: number) {
+      this.userService.followUser(userID).subscribe(
+      data => {
+        this.alertService.success('Registration successful', true);
+      },
+      error => {
+        this.alertService.error(error);
+      });
   }
 
 

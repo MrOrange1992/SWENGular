@@ -47,10 +47,10 @@ export class MovieListComponent implements OnInit {
   }
 
   addMovieToList(movieID: number): void{
-   this.movieListService.addMovieToList(movieID, this.selectedList).subscribe(resp => this.responseText = resp);
+   this.movieListService.addMovieToList(movieID, Number(this.selectedList)).subscribe(resp => this.responseText = resp);
   }
   removeMovieFromList(movieID:number): void{
-    this.movieListService.removeMovieFromList(movieID, this.selectedList).subscribe(resp => this.responseText = resp);
+    this.movieListService.removeMovieFromList(movieID, Number(this.selectedList)).subscribe(resp => this.responseText = resp);
   }
 
   onMovieClick(movie: Movie): void{
@@ -58,7 +58,7 @@ export class MovieListComponent implements OnInit {
     this.selectedMovieID = movie.id;
     this.loadMovieDetail(movie.id).subscribe(movie => this.selectedMovie = movie);
   }
-  sanitizeTrailer(url: string):SafeResourceUrl{
+  sanitizeTrailer(url: string): SafeResourceUrl{
     return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("https://youtu.be/","https://www.youtube.com/embed/"));
   }
 

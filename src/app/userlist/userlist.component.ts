@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
     this.movieListService.loadUserLists(1).subscribe(lists => this.userLists = lists);
   }
   loadMovieList(id: number) {
-    this.selectedUserList = this.movieListService.getMovieList(id);
+    this.selectedUserList = this.movieListService.getMovieListByID(id);
   }
   getOwnerName(){
     this.selectedUserList.subscribe(movielist => this.ownerID = movielist.ownerID);

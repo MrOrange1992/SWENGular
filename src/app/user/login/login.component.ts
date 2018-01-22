@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {AlertService} from '../../services/alert.service';
+import * as shajs from 'sha.js';
+
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-    this.authenticationService.login(this.user.username, this.user.password)
+    this.authenticationService.login(this.user.username,     shajs('sha256').update(this.user.password).digest('hex'))
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
