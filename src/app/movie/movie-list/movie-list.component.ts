@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
   showUserDetails: boolean;
   public userLists: Set<MovieList>;
   public movielist: Observable<MovieList>;
-  responseText: String;
+  responseMessage: String;
   selectedList: string;
   selectedMovie: Movie;
   selectedMovieID: number;
@@ -31,7 +31,6 @@ export class MovieListComponent implements OnInit {
   constructor(private movieListService: MovieListService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.responseText = "";
     this.selectedList = "";
   }
 
@@ -47,10 +46,10 @@ export class MovieListComponent implements OnInit {
   }
 
   addMovieToList(movieID: number): void{
-   this.movieListService.addMovieToList(movieID, Number(this.selectedList)).subscribe(resp => this.responseText = resp);
+   this.movieListService.addMovieToList(movieID, Number(this.selectedList)).subscribe(resp => this.responseMessage = "Added Movie to List!");
   }
   removeMovieFromList(movieID:number): void{
-    this.movieListService.removeMovieFromList(movieID, Number(this.selectedList)).subscribe(resp => this.responseText = resp);
+    this.movieListService.removeMovieFromList(movieID, Number(this.selectedList)).subscribe(resp => this.responseMessage = "Removed Movie from List!");
   }
 
   onMovieClick(movie: Movie): void{

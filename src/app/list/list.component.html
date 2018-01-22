@@ -1,9 +1,39 @@
 <app-header></app-header>
 <div class="content">
+
   <div class="container">
-    <h1>Your Movie-Lists</h1>
-    <div *ngIf="userLists | async as mlists" >
-      <div *ngFor="let list of mlists">
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3">
+        <div class="headline">
+          <h1 class="title text-center">Create Movie List</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3">
+        <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
+          <div class="form-group movie-search-form">
+            <!--input [(ngModel)]="movieListName" name="movieListName" class="form-control"-->
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+              <label for="name">List name</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="movieListToCreate.name" #name="ngModel" required />
+              <button [disabled]="!movieListToCreate.name" class="btn btn-primary">Create</button>
+              <div *ngIf="f.submitted && !name.valid" class="help-block">Listname is required</div>
+
+            </div>
+          </div>
+        </form>
+        <div *ngIf="responseMessage" class="alert-success"><p>{{responseMessage}}</p></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="text-center">Your Movie-Lists</h1>
+      </div>
+    </div>
+    <div class="row" *ngIf="userLists | async as mlists">
+      <div class="col-sm-4" *ngFor="let list of mlists">
         <h2>{{list.name}}</h2>
         <p>Movies: {{list.movieIDs.length}}</p>
         <button class="btn btn-default" [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: false}]">Edit List</button>

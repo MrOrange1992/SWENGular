@@ -72,9 +72,9 @@ export class MovieListService {
     return this.http.put(url, movieID, { params }).catch(this.handleError);
   }
 
-  createMovieList(movieList: MovieList): Observable<any> {
+  createMovieList(movieList: MovieList): Observable<MovieList> {
     const params = new HttpParams().set('action', 'createMovieList');
-    return this.http.post(this.baseURL, movieList, { params });
+    return this.http.post(this.baseURL, movieList, { params }).catch(this.handleError);
   }
 
   deleteListFromUser(listID: number): Observable<String> {
