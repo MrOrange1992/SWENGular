@@ -7,7 +7,7 @@ export interface Movie {
   genres: Set<Genre>;
   posterPath: string;
   homepage: string;
-  userRating: number;
+  voteAverage: number;
   overview: string;
   actors: Set<Actor>;
   trailer: string;
