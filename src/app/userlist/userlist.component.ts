@@ -33,7 +33,6 @@ export class UserListComponent implements OnInit {
     });
     this.loadUserListNames();
     this.loadMovieList(this.id);
-    this.getOwnerName();
   }
 
   loadUserListNames(): void {
@@ -41,9 +40,5 @@ export class UserListComponent implements OnInit {
   }
   loadMovieList(id: number) {
     this.selectedUserList = this.movieListService.getMovieListByID(id);
-  }
-  getOwnerName(){
-    this.selectedUserList.subscribe(movielist => this.ownerID = movielist.ownerID);
-    this.ownerName = this.movieListService.getOwnerName(1);
   }
 }

@@ -13,7 +13,6 @@ import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from '@angular/router';
 import {APP_ROUTES} from './app.routes';
 import {SearchComponent} from './search/search.component';
-import { CreateMovieListComponent } from './movie/create-movie-list/create-movie-list.component';
 import { AlertComponent } from './alert/alert.component';
 import {SanitizeUrlPipe} from './shared/pipes/SanitizeUrlPipe';
 import {AuthGuard} from './guards/auth.guard';
@@ -39,7 +38,6 @@ import {GenrePipe} from "./shared/pipes/genrePipe";
     SearchComponent,
     UserRegistrationComponent,
     MovieListComponent,
-    CreateMovieListComponent,
     LoginComponent,
     AlertComponent,
     SanitizeUrlPipe,
