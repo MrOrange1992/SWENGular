@@ -23,7 +23,7 @@ export class CreateMovieListComponent implements OnInit {
 
   create(): void {
     this.movieList.ownerID = JSON.parse(localStorage.getItem('activeUser')).id;
-    this.movieListService.createMovieList(this.movieList);
+    this.movieListService.createMovieList(this.movieList).subscribe();
     this.user = JSON.parse(localStorage.getItem('activeUser'));
     this.user.movieLists.push(this.movieList);
     localStorage.setItem('activeUser', JSON.stringify(this.user));
