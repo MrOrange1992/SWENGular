@@ -89,10 +89,11 @@ export class MovieListService {
     return this.http.delete(url, { params }).catch(this.handleError);
   }
 
-  getGenre(genreID: number): Observable<Genre>{
+  getGenre(genreID: number): Observable<Genre> {
     const url = 'http://localhost:8080/genre/' + genreID;
-    const headers = new HttpHeaders().set('Accept', 'application/json');
-    return this.http.get(url, {headers}).catch(this.handleError);
+    const params = new HttpParams().set('action', 'getByName');
+
+    return this.http.get(url, { params }).catch(this.handleError);
   }
 
   private handleError(error: any) {
