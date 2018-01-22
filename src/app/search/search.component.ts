@@ -7,6 +7,7 @@ import {UserService} from "../user/user-service/user-service";
 import {MovieListComponent} from "../movie/movie-list/movie-list.component";
 import {Movie} from "../entities/movie";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -23,20 +24,31 @@ export class SearchComponent implements OnInit {
 
   movieList: Observable<MovieList> = null;
   userList: Array<User> = [];
-
+  user: User;
   selectedMovie: Movie;
   selectedMovieID: number;
   safeTrailerUrl: SafeResourceUrl;
+
+  movieName: string;
 
   slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
     'responsive':[{'breakpoint': 1199, 'settings':{ 'slidesToShow':4, 'slidesToScroll':4}},
       {'breakpoint': 991, 'settings':{ 'slidesToShow':3, 'slidesToScroll':3}},
       {'breakpoint': 767, 'settings':{ 'slidesToShow':1, 'slidesToScroll':1}}] };
 
-  constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer) { }
+  constructor(private movieListService: MovieListService, private userService: UserService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(JSON.parse(localStorage.getItem('activeUser')));
+    this.user = JSON.parse(localStorage.getItem('activeUser'));
+    console.log(this.user.movieLists);
+    this.route.params.subscribe(p => {
+      this.movieName = p['searchName'];
+    });
+    if(this.movieName!=null){
+      this.searchSelect = "movie";
+      this.searchName = this.movieName;
+      this.search();
+    }
   }
 
   search(): void {

@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from "../services/authentication.service";
+import {Router, RouterModule} from "@angular/router";
+import {APP_ROUTES} from "../app.routes";
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  providers: [RouterModule]
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
+  searchName: String = "";
   ngOnInit() {
   }
 
@@ -17,6 +21,10 @@ export class HeaderComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  search(name: String){
+    this.router.navigate(['/search',name]);
+  }
 
 
 }
+

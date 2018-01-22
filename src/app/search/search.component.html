@@ -29,7 +29,7 @@
           <h1>Results</h1>
         </div>
       </div>
-      <app-movie-list [movielist]="movieList"></app-movie-list>
+      <app-movie-list [movielist]="movieList" [userLists]="user.movieLists" ></app-movie-list>
     </div>
   </div>
   <div class="container">
@@ -42,7 +42,7 @@
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           </div>
           <div class="user-content">
-            <p>Lists: <span *ngFor="let list of user.movieLists"><a [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: true}]">{{list.name}}</a>,</span></p>
+            <p>Lists: <span *ngFor="let list of user.movieLists "><a [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: true}]">{{list.name}}</a>,</span></p>
             <p>Users Following: {{user.usersFollowing.size}}</p>
             <p>Favourite Genres: <span *ngFor="let genre of user.genreIDs">{{genre}},</span></p>
           </div>

@@ -5,23 +5,19 @@ import {ActivatedRoute} from "@angular/router";
 import {MovieList} from "../../entities/movie-list";
 import {Movie} from "../../entities/movie";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-import {Console} from "@angular/core/src/console";
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   providers: [MovieListService],
-  inputs: ['movielist', 'userLists','loadedmovielist'],
+  inputs: ['movielist', 'userLists'],
 })
 export class MovieListComponent implements OnInit {
 
   id: number;
   showUserDetails: boolean;
-  userLists: Set<MovieList>;
-
+  public userLists: Set<MovieList>;
   public movielist: Observable<MovieList>;
-  public loadedmovielist: MovieList;
-
   responseText: String;
   selectedList: string;
   selectedMovie: Movie;

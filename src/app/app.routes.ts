@@ -41,6 +41,11 @@ export const APP_ROUTES: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'search/:searchName',
+    component: SearchComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'create',
     component: CreateMovieListComponent,
     canActivate: [AuthGuard]

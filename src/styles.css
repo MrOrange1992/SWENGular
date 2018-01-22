@@ -129,6 +129,19 @@ body .movie-detail-view .yt-frame {
   margin: 15px auto 0px auto;
   display: block;
 }
+body .movie-search-form input {
+  width: 70%;
+  display: inline-block;
+}
+body .movie-search-form select {
+  width: 14%;
+  height: 35px;
+  display: inline-block;
+}
+body .movie-search-form .btn {
+  width: 14%;
+  display: inline-block;
+}
 body .user-card {
   min-height: 35vh;
   position: relative;
