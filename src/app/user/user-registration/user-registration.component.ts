@@ -6,12 +6,14 @@ import {User} from '../../entities/user';
 import {Genre} from "../../entities/genre";
 import {GenreService} from "../../genre/genre-service/genre-service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MovieListService} from "../../movie/movie-list-service/movie-list-service";
 
 @Component({
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
   providers: [
     UserService,
+    MovieListService,
     AlertService
   ]
 })
@@ -47,6 +49,7 @@ export class UserRegistrationComponent {
     private router: Router,
     private userService: UserService,
     private genreService: GenreService,
+    private movieListService: MovieListService,
     private alertService: AlertService,
     private fb: FormBuilder,
   ) { }
@@ -92,6 +95,9 @@ export class UserRegistrationComponent {
 
   register() {
     this.loading = true;
+
+    //this.movieListService.createRecommendedMovieList(this.user.genreIDs).subscribe();
+
     this.userService.create(this.user)
       .subscribe(
         data => {
@@ -107,6 +113,7 @@ export class UserRegistrationComponent {
   onChange(id: number, isChecked: boolean): void {
     if (isChecked) { this.user.genreIDs.push(id); }
     else { this.user.genreIDs.pop(id); }
-
   }
+
+
 }

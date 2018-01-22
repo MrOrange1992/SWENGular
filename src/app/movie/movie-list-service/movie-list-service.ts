@@ -19,6 +19,12 @@ export class MovieListService {
     return this.http.get(this.baseURL, { params }).catch(this.handleError);
   }
 
+  createRecommendationList(genreIDs: Set<number>): Observable<MovieList> {
+    const params = new HttpParams().set('action', 'getRecommendations');
+
+    return this.http.post(this.baseURL, genreIDs, { params }).catch(this.handleError);
+  }
+
   getMovieListByID(movieListID: number): Observable<MovieList> {
     const url = this.baseURL + movieListID;
     const params = new HttpParams().set('action', 'getMovieListByID');
@@ -83,7 +89,7 @@ export class MovieListService {
     return this.http.delete(url, { params }).catch(this.handleError);
   }
 
-  getGenre(genreID:number): Observable<Genre>{
+  getGenre(genreID: number): Observable<Genre>{
     const url = 'http://localhost:8080/genre/' + genreID;
     const headers = new HttpHeaders().set('Accept', 'application/json');
     return this.http.get(url, {headers}).catch(this.handleError);
