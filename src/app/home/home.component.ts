@@ -11,12 +11,13 @@ import {MovieListService} from "../movie/movie-list-service/movie-list-service";
 export class HomeComponent implements OnInit {
 
   movieList: any = {};
+  message: string;
 
   constructor(private movieListService: MovieListService) { }
 
   ngOnInit() {
     this.movieList = this.movieListService.createRecommendationList(JSON.parse(localStorage.getItem('activeUser')).genreIDs);//.subscribe(data => this.recommendationList.push(data));
-    console.log(this.movieList)
+    this.message = "Welcome to SWENGular " + JSON.parse(localStorage.getItem('activeUser')).username + "!";
   }
 
 
