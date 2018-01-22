@@ -5,6 +5,7 @@ import {MovieList} from '../../entities/movie-list';
 import 'rxjs/Rx';
 import {Movie} from "../../entities/movie";
 import {User} from "../../entities/user";
+import {Genre} from "../../entities/genre";
 
 @Injectable()
 export class MovieListService {
@@ -81,6 +82,12 @@ export class MovieListService {
     const url = 'http://localhost:8080/removelistfromuser';
     const headers = new HttpHeaders().set('Accept', 'application/json');
     return this.http.post(url, {'listID':listID.toString()}).catch(this.handleError);
+  }
+
+  getGenre(genreID:number): Observable<Genre>{
+    const url = 'http://localhost:8080/genre/' + genreID;
+    const headers = new HttpHeaders().set('Accept', 'application/json');
+    return this.http.get(url, {headers}).catch(this.handleError);
   }
 
   private handleError(error: any) {

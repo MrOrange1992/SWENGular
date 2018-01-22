@@ -14,27 +14,31 @@ export class ListComponent implements OnInit {
 
   userLists: Observable<Set<MovieList>>;
   selectedList: string;
-  userID: number;
+  user: any = {};
   output: String;
+  listToDelete: MovieList;
   constructor( private movieListService: MovieListService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.selectedList = "";
-    this.userID = JSON.parse(localStorage.getItem('activeUser')).id;
+    this.user = JSON.parse(localStorage.getItem('activeUser'));
 
-    console.log(this.userID);
 
     this.loadUserLists();
   }
 
 
   loadUserLists(): void {
-    this.userLists = this.movieListService.loadUserLists(this.userID);
+    this.userLists = this.movieListService.loadUserLists(this.user.id);
   }
 
   deleteList(id: number): void{
+    this.movieListService.getMovieList(id).subscribe(list => this.listToDelete = list);
     this.movieListService.deleteListFromUser(id).subscribe(output => this.output = output);
     this.loadUserLists();
+    this.user = JSON.parse(localStorage.getItem('activeUser'));
+    this.user.movieLists.pop(this.listToDelete);
+    localStorage.setItem('activeUser', JSON.stringify(this.user));
   }
 
 }

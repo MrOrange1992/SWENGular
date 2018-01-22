@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MovieListService} from '../movie-list-service/movie-list-service';
 import {Observable} from "rxjs/Observable";
 import {ActivatedRoute} from "@angular/router";
@@ -63,4 +63,3 @@ export class MovieListComponent implements OnInit {
   }
 
 }
-//TODO: Get username from userID

@@ -1,13 +1,13 @@
 Task/Feature,Priority,Status,Notes
-"Communication with SB application (Controller)",H,DONE,
-"Movie search",H,IP,"Add/Remove to/from List implementation missing"
+,"Communication with SB application (Controller)",H,DONE,
+"Movie search",H,IP,"DONE",
 "Movie search BONUS: Search by Genres", ,
 "User search",H,IP,"Genrenames from IDs, number of following users missing, follow implementation missing"
 "User registration",H,DONE,"With Authentication / Validation"
 "User settings for add/remove Genres",M,,
 "CRUD MovieList",H,IP,"create DONE"
-"Add Movie to MovieList",H,IP,
-"Display owned MovieLists",H,IP,
+"Add Movie to MovieList",H,DONE,
+"Display owned MovieLists",H,DONE,
 "Display MovieLists of Users active User is following",M,,
 "Display (User Cards) of Users active User is following",L,,
 "Copy MovieList of other User",L,,"Handle duplicate in SB for search and displaying (name)"

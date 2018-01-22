@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieListService} from '../movie-list-service/movie-list-service';
+import {User} from "../../entities/user";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {MovieListService} from '../movie-list-service/movie-list-service';
 export class CreateMovieListComponent implements OnInit {
 
   movieList: any = {};
+  user: any = {};
 
   constructor(
     private movieListService: MovieListService,
@@ -22,6 +24,9 @@ export class CreateMovieListComponent implements OnInit {
   create(): void {
     this.movieList.ownerID = JSON.parse(localStorage.getItem('activeUser')).id;
     this.movieListService.createMovieList(this.movieList);
+    this.user = JSON.parse(localStorage.getItem('activeUser'));
+    this.user.movieLists.push(this.movieList);
+    localStorage.setItem('activeUser', JSON.stringify(this.user));
   }
 
 }

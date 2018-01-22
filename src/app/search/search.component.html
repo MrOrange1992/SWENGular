@@ -37,14 +37,14 @@
       <div name="userContainer" *ngFor="let user of userList" class="col-sm-4 col-md-3 ">
         <div class="user-card">
           <!-- {{user | json}} -->
-          <p class="text-center card-title">{{user.userName}}</p>
+          <p class="text-center card-title">{{user.username}}</p>
           <div class="user-head">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           </div>
           <div class="user-content">
-            <p>Lists: <span *ngFor="let list of user.movieLists "><a [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: true}]">{{list.name}}</a>,</span></p>
+            <p>Lists: <span *ngFor="let list of user.movieLists "><a [routerLink]="['../user-list', 'userlist', {id: list.id, showUserDetails: true}]">{{list.name}}</a>,&nbsp;</span></p>
             <p>Users Following: {{user.usersFollowing.size}}</p>
-            <p>Favourite Genres: <span *ngFor="let genre of user.genreIDs">{{genre}},</span></p>
+            <p>Favourite Genres: <span *ngFor="let genre of user.genreIDs "><span *ngIf="genre | genrePipe | async as aGenre">{{aGenre.name}},&nbsp;</span></span></p>
           </div>
           <button
             [disabled]="!user"

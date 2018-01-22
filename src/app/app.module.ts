@@ -27,6 +27,7 @@ import {GenreService} from "./genre/genre-service/genre-service";
 import {ListComponent} from "./list/list.component";
 import {UserListComponent} from "./userlist/userlist.component";
 import { ProfileComponent } from './user/profile/profile.component';
+import {GenrePipe} from "./shared/pipes/genrePipe";
 
 
 @NgModule({
@@ -42,12 +43,14 @@ import { ProfileComponent } from './user/profile/profile.component';
     LoginComponent,
     AlertComponent,
     SanitizeUrlPipe,
+    GenrePipe,
     ListComponent,
     UserListComponent,
     ProfileComponent,
   ],
   exports: [
     SanitizeUrlPipe,
+    GenrePipe,
   ],
   imports: [
     BrowserModule,
