@@ -1,10 +1,34 @@
 # SWENGular
 
+This repository is part of the course 'SWENGS' of the Bachelor study 'Information Management' of University of Applied Sciences in Graz.
+
+It is the Frontend for our 'SWENGular' project, using Angular 5.
+
+Our goal was to create an API based webservice where users can discover and manage movies.
+
+The Backend can be found here: https://github.com/MrOrange1992/swengularsb .
+
+The backend uses the [TMDB API](https://www.themoviedb.org/documentation/api) in conjunction with the Java wrapper [themoviedbapi](https://github.com/holgerbrandl/themoviedbapi) from Holger Brandl.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
+
+## Prerequisites
+
+[Node.js](https://nodejs.org/)
+
+## First run
+
+When using the IntelliJ IDE you have to:
+* Check out from version control
+* Create project from existing sources
+* Terminal: `npm install`
+* Terminal: `npm start`
+
+Now start a browser of your choice and navigate to `http://localhost:xxxx/` using the port from the terminal output (default = 4200).
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
