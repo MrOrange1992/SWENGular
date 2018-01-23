@@ -11,8 +11,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 When using the IntelliJ IDE you have to:
 * Check out from version control
 * Create project from existing sources
-* Terminal: npm install
-* Terminal: npm start
+* Terminal: `npm install`
+* Terminal: `npm start`
 
 Now start a browser of your choice and navigate to `http://localhost:xxxx/` using the port from the terminal output (default = 4200).
 
