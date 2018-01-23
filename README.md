@@ -1,5 +1,15 @@
 # SWENGular
 
+This repository is part of the course 'SWENGS' of the Bachelor study 'Information Management' of University of Applied Sciences in Graz.
+
+It is the Frontend for our 'SWENGular' project, using Angular 5.
+
+The Backend can be found here: https://github.com/MrOrange1992/swengularsb .
+
+Our goal was to create an API based webservice where User can discover and manage movies.
+
+The backend uses the [TMDB API](https://www.themoviedb.org/documentation/api) in conjunction with the Java wrapper [themoviedbapi](https://github.com/holgerbrandl/themoviedbapi) from Holger Brandl.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
 ## Prerequisites
