@@ -6,7 +6,7 @@ It is the Frontend for our 'SWENGular' project, using Angular 5.
 
 The Backend can be found here: https://github.com/MrOrange1992/swengularsb .
 
-Our goal was to create an API based webservice where User can discover and manage movies.
+Our goal was to create an API based webservice where users can discover and manage movies.
 
 The backend uses the [TMDB API](https://www.themoviedb.org/documentation/api) in conjunction with the Java wrapper [themoviedbapi](https://github.com/holgerbrandl/themoviedbapi) from Holger Brandl.
 
