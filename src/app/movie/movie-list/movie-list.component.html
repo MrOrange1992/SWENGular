@@ -27,7 +27,7 @@
     <div *ngIf="selectedMovie" class="movie-detail-view">
       <div class="col-sm-6">
         <h2>{{selectedMovie.title}}</h2>
-        <p><i class="fa fa-star" aria-hidden="true">{{selectedMovie.userRating}}</i></p>
+        <p><i *ngFor="let i of stars" class="fa fa-star" aria-hidden="true"></i>&nbsp;{{selectedMovie.voteAverage}}</p>
         <p>Genres: <span *ngFor="let genre of selectedMovie.genres">{{genre.name}}, </span></p>
         <p>Actors: <span *ngFor="let actor of selectedMovie.actors">{{actor.name}}, </span></p>
         <p>{{selectedMovie.overview}}</p>

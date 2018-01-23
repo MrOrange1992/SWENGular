@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit {
   }
 
   loadUserListNames(): void {
-    this.movieListService.loadUserLists(1).subscribe(lists => this.userLists = lists);
+    this.movieListService.loadUserLists(JSON.parse(localStorage.getItem('activeUser')).id).subscribe(lists => this.userLists = lists);
   }
   loadMovieList(id: number) {
     this.selectedUserList = this.movieListService.getMovieListByID(id);

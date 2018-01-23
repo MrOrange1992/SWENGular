@@ -22,6 +22,7 @@ export class MovieListComponent implements OnInit {
   selectedList: string;
   selectedMovie: Movie;
   selectedMovieID: number;
+  stars: Array<number>;
   safeTrailerUrl: SafeResourceUrl;
 
   slideConfig = {'slidesToShow': 6, 'slidesToScroll': 3, 'infinite': true, 'autoplay':true, 'arrows':true, 'speed':3000, 'dots':true,
@@ -32,6 +33,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() {
     this.selectedList = "";
+    this.stars = [];
   }
 
   loadMovieDetail(id: number): Observable<Movie>{
@@ -55,7 +57,7 @@ export class MovieListComponent implements OnInit {
   onMovieClick(movie: Movie): void{
 
     this.selectedMovieID = movie.id;
-    this.loadMovieDetail(movie.id).subscribe(movie => this.selectedMovie = movie);
+    this.loadMovieDetail(movie.id).subscribe(movie => (this.selectedMovie = movie, this.stars = Array(Math.floor(this.selectedMovie.voteAverage)).fill(1)));
   }
   sanitizeTrailer(url: string): SafeResourceUrl{
     return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("https://youtu.be/","https://www.youtube.com/embed/"));
