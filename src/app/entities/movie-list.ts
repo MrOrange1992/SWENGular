@@ -1,7 +1,7 @@
 import {Movie} from './movie';
 import {User} from './user';
 
-export interface MovieList {
+export class MovieList {
   id: number;
   name: string;
   ownerID: number;

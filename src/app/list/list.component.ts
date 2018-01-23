@@ -13,7 +13,7 @@ import {MovieListService} from "../movie/movie-list-service/movie-list-service";
 export class ListComponent implements OnInit {
 
 
-  movieListToCreate: any ={};
+  movieListToCreate: MovieList = new MovieList();
   movieListToDelete: any = {};
   responseMessage: string;
 
@@ -27,8 +27,8 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.selectedList = "";
     this.user = JSON.parse(localStorage.getItem('activeUser'));
-    this.movieListToCreate.name="";
-
+    this.movieListService.loadUserLists(JSON.parse(localStorage.getItem('activeUser')).id).subscribe(lists => (this.user.movieLists = lists));
+    this.movieListToCreate.name = "";
     this.loadUserLists();
   }
 
@@ -38,26 +38,26 @@ export class ListComponent implements OnInit {
   }
 
   deleteList(id: number): void{
-    this.movieListService.getMovieListByID(id).subscribe(list => this.listToDelete = list);
-    this.movieListService.deleteListFromUser(id).subscribe(res => this.responseMessage="Deleted List!");
-    this.loadUserLists();
-    this.user = JSON.parse(localStorage.getItem('activeUser'));
-    this.user.movieLists.pop(this.listToDelete);
-    localStorage.setItem('activeUser', JSON.stringify(this.user));
-
-
+    this.user.movieLists.forEach(item => {if(item.id==id){this.listToDelete = item}});
+    this.movieListService.deleteListFromUser(id).subscribe(res => (
+      this.responseMessage="Deleted List!",
+      this.user = JSON.parse(localStorage.getItem('activeUser')),
+      this.user.movieLists.pop(this.listToDelete),
+      localStorage.setItem('activeUser', JSON.stringify(this.user)),
+        this.loadUserLists()
+    ));
   }
 
   create(): void {
-    this.movieListToCreate.ownerID = JSON.parse(localStorage.getItem('activeUser')).id;
-    this.movieListToCreate.movies = [];
-    this.movieListToCreate.id= null;
-    this.movieListToCreate.movieIDs = [];
-    this.movieListService.createMovieList(this.movieListToCreate).subscribe(res => (this.movieListToCreate = res, this.responseMessage="Created List!"));
-    this.user = JSON.parse(localStorage.getItem('activeUser'));
-    this.user.movieLists.push(this.movieListToCreate);
-    localStorage.setItem('activeUser', JSON.stringify(this.user));
-    this.loadUserLists();
+    this.movieListToCreate.ownerID = this.user.id;
+    this.movieListService.createMovieList(this.movieListToCreate).subscribe(res => (
+      this.movieListToCreate = res,
+        this.user.movieLists.push(this.movieListToCreate),
+        localStorage.setItem('activeUser',
+          JSON.stringify(this.user)),
+        console.log(JSON.parse(localStorage.getItem('activeUser')).movieLists),
+        this.loadUserLists()
+    ));
   }
 
 }
