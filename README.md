@@ -2,9 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
+## Prerequisites
+
+Node.js ( `https://nodejs.org/` )
+
+## First run
+
+When using the IntelliJ IDE you have to:
+* Check out from version control
+* Create project from existing sources
+* Terminal: npm install
+* Terminal: npm start
+
+Now start a browser of your choice and navigate to `http://localhost:xxxx/` using the port from the terminal output (default = 4200)
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
