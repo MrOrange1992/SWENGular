@@ -14,7 +14,7 @@ When using the IntelliJ IDE you have to:
 * Terminal: npm install
 * Terminal: npm start
 
-Now start a browser of your choice and navigate to `http://localhost:xxxx/` using the port from the terminal output (default = 4200)
+Now start a browser of your choice and navigate to `http://localhost:xxxx/` using the port from the terminal output (default = 4200).
 
 ## Development server
 
